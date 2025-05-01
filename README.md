@@ -1,3 +1,3 @@
-Currently, Racingway can only generate the seed string, which you'd enter at one of the pages that generates seeds.
+Currently, Racingway can only generate the seed string, which you'd enter at one of the pages that generates seeds. Racingway is being worked on to expand it's abilities to actually generate seeds from the main site and galeswift's fork.
 
-This limitation should be restricted at some point soon!
+Racingway built with the [racetime-bot](https://github.com/racetimeGG/racetime-bot) and is initially patterned after [ootr-randobot](https://github.com/OoTRandomizer/rtgg-randobot). 
