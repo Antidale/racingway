@@ -5,6 +5,7 @@ import re
 import random
 import string
 import secrets
+from .fe_seed_gen import FF4FESeedGen
 from racetime_bot import RaceHandler, monitor_cmd, can_moderate, can_monitor, msg_actions
 
 GREETING = "I'm a racebot! "
@@ -82,7 +83,6 @@ class RandoHandler(RaceHandler):
 
     async def should_stop(self):
         if self.data.get('opened_by') is None:
-            # Ignore all rooms opened by bots, allowing Mido (https://github.com/midoshouse/midos.house) to open rooms in official goals.
             # This is okay because Racingway does not open any rooms.
             return True
         return await super().should_stop()
@@ -98,11 +98,22 @@ class RandoHandler(RaceHandler):
                 GREETING + random.choice(self.greetings),
                 actions=[
                     msg_actions.Action(
-                        label='Generate seed value',
+                        label='Gimme gimme',
+                        help_text='Generates a preset. One specific preset',
+                        message='!preset',
+                        submit='Roll race seed',
+                    ),
+                    msg_actions.Action(
+                        label='Clever Backup',
                         help_text='Generates a seed value to roll at a website',
                         message='!seed',
                         submit='Roll race seed',
                     ),
+                    # msg_actions.SelectInput(
+                    #     label='Preset',
+                    #     help_text='Generates a seed from a selection of presets',
+                    #     options={key: value['full_name'] for key, value in self.presets},
+                    # ),
                     msg_actions.ActionLink(
                         label='Help',
                         url='https://github.com/Antidale/racingway/blob/develop/README.md',
@@ -183,6 +194,18 @@ class RandoHandler(RaceHandler):
         await self.send_message(
             'Lock released. Anyone may now roll a seed.'
         )
+
+    async def ex_preset(self, args, message):
+        """
+        Handle !preset commands.
+        """
+        if self._race_in_progress() or not can_monitor(message):
+            return
+        
+        await self.send_message("hold on, let me get that for you")
+        seedData = await FF4FESeedGen.gen_fe_seed("O1:quest_forge/req:all/win:crystal Kmain/moon/pink/nofree/unweighted/start:spoon Pkey Crelaxed/nofree/maybe/distinct:10/start:any/thrift:3/j:abilities/nodupes/hero Tsemipro/sparse:80/sparsey:overworld/playable/junk Swildish/no:vampires,damage_items Bstandard/restrict:giant,package/whichburn/whichbez Etoggle Glife/sylph/backrow/64 -kit:freedom -noadamants -fusoya:maybe -exp:maxlevelbonus -tweak:edwardheal")
+        await self.send_message("URL: " + seedData["url"], pinned=True)
+        await self.send_message("Hash:" + seedData["verification"], pinned=True)
 
     async def ex_seed(self, args, message):
         """
