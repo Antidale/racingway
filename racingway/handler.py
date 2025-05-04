@@ -96,10 +96,10 @@ class RandoHandler(RaceHandler):
                 GREETING + random.choice(self.greetings),
                 actions=[
                     msg_actions.Action(
-                        label='Roll Flags',
-                        help_text='Rolls flags for galeswift\'s fork',
+                        label='Roll',
+                        help_text='Roll Flags',
                         message='!flags ${flags}',
-                        submit='Roll race seed',
+                        submit='Roll',
                         survey=msg_actions.Survey(
                             msg_actions.TextInput(
                                 name="flags",
@@ -128,7 +128,7 @@ class RandoHandler(RaceHandler):
         message = data.get('message', {})
         if (
             message.get('is_bot')
-            and message.get('bot') == 'Racingway'
+            and message.get('bot').lower() == 'racingway'
             and message.get('is_pinned')
             and message.get('message_plain', '').startswith(GREETING)
         ):
@@ -155,44 +155,42 @@ class RandoHandler(RaceHandler):
 
     async def race_data(self, data):
         await super().race_data(data)
+        await self.check_remove_bot_pin()
+        
+    # Temporary comment out of lock/unlock commands. Have to check with people on if they want restrictions on rolling
+    # @monitor_cmd
+    # async def ex_lock(self, args, message):
+    #     """
+    #     Handle !lock commands.
 
-        if self._race_in_progress() and self.state.get('pinned_msg'):
-            await self.unpin_message(self.state['pinned_msg'])
-            del self.state['pinned_msg']
+    #     Prevent seed rolling unless user is a race monitor.
+    #     """
+    #     if self._race_in_progress():
+    #         return
+    #     self.state['locked'] = True
+    #     await self.send_message(
+    #         'Lock initiated. I will now only roll seeds for race monitors.'
+    #     )
 
-    @monitor_cmd
-    async def ex_lock(self, args, message):
-        """
-        Handle !lock commands.
+    # @monitor_cmd
+    # async def ex_unlock(self, args, message):
+    #     """
+    #     Handle !unlock commands.
 
-        Prevent seed rolling unless user is a race monitor.
-        """
-        if self._race_in_progress():
-            return
-        self.state['locked'] = True
-        await self.send_message(
-            'Lock initiated. I will now only roll seeds for race monitors.'
-        )
-
-    @monitor_cmd
-    async def ex_unlock(self, args, message):
-        """
-        Handle !unlock commands.
-
-        Remove lock preventing seed rolling unless user is a race monitor.
-        """
-        if self._race_in_progress():
-            return
-        self.state['locked'] = False
-        await self.send_message(
-            'Lock released. Anyone may now roll a seed.'
-        )
+    #     Remove lock preventing seed rolling unless user is a race monitor.
+    #     """
+    #     if self._race_in_progress():
+    #         return
+    #     self.state['locked'] = False
+    #     await self.send_message(
+    #         'Lock released. Anyone may now roll a seed.'
+    #     )
 
     # async def ex_preset(self, args, message):
     #     """
     #     Handle !preset commands.
     #     """
-    #     if self._race_in_progress() or not can_monitor(message):
+    #     if self._race_in_progress():
     #         return
         
     #     if self.state.get('seed_id') and not can_moderate(message):
@@ -212,7 +210,7 @@ class RandoHandler(RaceHandler):
         Handle !flags commands.
         """
 
-        if self._race_in_progress() or not can_monitor(message):
+        if self._race_in_progress():
             return
         
         if self.state.get('seed_id') and not can_moderate(message):
@@ -220,14 +218,14 @@ class RandoHandler(RaceHandler):
             return
 
         await self.send_preroll_snark()
+
         seedValue = self.generate_seed_value()
-        self.state['seed_id'] = seedValue
+
         flags = ' '.join(args)
         seedData = await FF4FESeedGen.gen_fe_seed(flags, seedValue)
         await self.set_bot_raceinfo(seedData["url"] + "\nHash: " + seedData["verification"])
         await self.send_seed_snark()
-        if self.state.get('pinned_msg'):
-            await self.unpin_message(self.state['pinned_msg'])
+        await self.check_remove_bot_pin()
 
     def _race_pending(self):
         return self.data.get('status').get('value') == 'pending'
@@ -236,8 +234,12 @@ class RandoHandler(RaceHandler):
         return self.data.get('status').get('value') in ('pending', 'in_progress')
     
     def generate_seed_value(self):
+        """
+        Generates a 10 character alphanumeric string for the seed, sets it as state['seed_id'] and returns the value.
+        """
         alphabet = string.ascii_uppercase + string.digits
         seed = ''.join(secrets.choice(alphabet) for i in range(10))
+        self.state['seed_id'] = seed
         return seed
     
     async def send_seed_snark(self):
@@ -252,6 +254,9 @@ class RandoHandler(RaceHandler):
         await self.send_message(random.choice(snark))
 
     async def send_preroll_snark(self):
+        """
+        Sends a bit of text to the room to indicate that a command is underway
+        """
         snark = (
             'Workin\' on it boss.',
             'As you wish!',
@@ -261,3 +266,11 @@ class RandoHandler(RaceHandler):
         )
 
         await self.send_message(random.choice(snark))
+
+    async def check_remove_bot_pin(self):
+        """
+        If the bot has a pinned message that it is keeping track of, unpin it and remove the property from the state object
+        """
+        if self.state.get('pinned_msg'):
+            await self.unpin_message(self.state['pinned_msg'])
+            del self.state['pinned_msg']

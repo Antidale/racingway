@@ -5,33 +5,32 @@ import asyncio
 import os
 import requests
 
-
 class InvalidFlagString(Exception):
-
     def __init__(self, message):
         self.message = message
 
-
 class SeedGenerationError(Exception):
-
     def __init__(self, message):
         self.message = message 
+
+preset_list = {
+    ''
+}
 
 class FF4FESeedGen():
 
     def __init__(self):
         super().__init__("ff4roll")
-        
 
-    async def gen_fe_seed(flag_string, seed_string=""):  
+    async def gen_fe_seed(flags, seed=""):  
         # Send post to generate seed
+        # base_url = "http://127.0.0.1:8080"
+        # api_key = os.environ['LOCAL_API_KEY']
+
         base_url = "https://ff4fe.galeswift.com"
         api_key = os.environ['GALESWIFT_API_KEY']
-        flags = flag_string
-        if " " in flag_string:
-            flags = ' '.join(flag_string)
 
-        gen_data = {"flags": flags, "seed": ""}
+        gen_data = {"flags": flags, "seed": seed}
         post_response = requests.post(f"{base_url}/api/generate?key={api_key}", data=gen_data).json()
         
         # Handle post response
