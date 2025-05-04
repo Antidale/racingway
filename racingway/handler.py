@@ -202,10 +202,17 @@ class RandoHandler(RaceHandler):
         if self._race_in_progress() or not can_monitor(message):
             return
         
+        if self.state.get('seed_id') and not can_moderate(message):
+            await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
+            return
+        
         await self.send_message("hold on, let me get that for you")
-        seedData = await FF4FESeedGen.gen_fe_seed("O1:quest_forge/req:all/win:crystal Kmain/moon/pink/nofree/unweighted/start:spoon Pkey Crelaxed/nofree/maybe/distinct:10/start:any/thrift:3/j:abilities/nodupes/hero Tsemipro/sparse:80/sparsey:overworld/playable/junk Swildish/no:vampires,damage_items Bstandard/restrict:giant,package/whichburn/whichbez Etoggle Glife/sylph/backrow/64 -kit:freedom -noadamants -fusoya:maybe -exp:maxlevelbonus -tweak:edwardheal")
-        await self.send_message("URL: " + seedData["url"], pinned=True)
-        await self.send_message("Hash:" + seedData["verification"], pinned=True)
+        seedValue = self.generate_seed_value()
+        self.state['seed_id'] = seedValue
+        seedData = await FF4FESeedGen.gen_fe_seed("Omode:ki12/random:2,quest/random2:1,tough_quest/req:all/win:crystal Kmain/summon/moon/nofree:dwarf/unweighted Pkey Cstandard/nofree/restrict:cecil,fusoya/j:abilities/paladin/nekkie/party:4/treasure:free Twildish Sprice:200/pricey:items/standard Bstandard/alt:gauntlet/whichbez Etoggle Glife/sylph/backrow -kit:better -smith:alt -fusoya:sequential_r -exp:objectivebonus25 -tweak:edwardheal", seedValue)
+        await self.set_bot_raceinfo(seedData["url"] + " Hash: " + seedData["verification"])
+        await self.send_message("Here's your seed: " + seedData["url"])
+        await self.send_message("Verification code: " + seedData["verification"])
 
     async def ex_seed(self, args, message):
         """
@@ -220,8 +227,7 @@ class RandoHandler(RaceHandler):
         )
         if self._race_in_progress():
             return
-        alphabet = string.ascii_uppercase + string.digits
-        seed = ''.join(secrets.choice(alphabet) for i in range(10))
+        seed = self.generate_seed_value()
         await self.send_message(seed)
         await self.send_message(random.choice(snark))
 
@@ -230,3 +236,8 @@ class RandoHandler(RaceHandler):
 
     def _race_in_progress(self):
         return self.data.get('status').get('value') in ('pending', 'in_progress')
+    
+    def generate_seed_value(self):
+        alphabet = string.ascii_uppercase + string.digits
+        seed = ''.join(secrets.choice(alphabet) for i in range(10))
+        return seed
