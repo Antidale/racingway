@@ -34,7 +34,6 @@ def format_duration(duration):
         parts.append(f'{seconds} second{"" if seconds == 1 else "s"}')
     return natjoin(parts, '0 seconds')
 
-
 def parse_duration(args, default):
     if len(args) == 0:
         raise ValueError('Empty duration args')
@@ -60,7 +59,6 @@ def parse_duration(args, default):
             duration += datetime.timedelta(**{unit: float(match.group(1))})
             arg = arg[len(match.group(0)):]
     return duration
-
 
 class RandoHandler(RaceHandler):
     """
@@ -121,14 +119,6 @@ class RandoHandler(RaceHandler):
             self.state['intro_sent'] = True
         if 'locked' not in self.state:
             self.state['locked'] = False
-        if 'fpa' not in self.state:
-            self.state['fpa'] = False
-        if 'password_active' not in self.state:
-            self.state['password_active'] = False
-        if 'password_published' not in self.state:
-            self.state['password_published'] = False
-        if 'password_retrieval_failed' not in self.state:
-            self.state['password_retrieval_failed'] = False
 
     async def end(self):
         if self.state.get('pinned_msg'):
@@ -198,24 +188,24 @@ class RandoHandler(RaceHandler):
             'Lock released. Anyone may now roll a seed.'
         )
 
-    async def ex_preset(self, args, message):
-        """
-        Handle !preset commands.
-        """
-        if self._race_in_progress() or not can_monitor(message):
-            return
+    # async def ex_preset(self, args, message):
+    #     """
+    #     Handle !preset commands.
+    #     """
+    #     if self._race_in_progress() or not can_monitor(message):
+    #         return
         
-        if self.state.get('seed_id') and not can_moderate(message):
-            await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
-            return
+    #     if self.state.get('seed_id') and not can_moderate(message):
+    #         await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
+    #         return
 
-        await self.send_message("hold on, let me get that for you")
-        seedValue = self.generate_seed_value()
-        self.state['seed_id'] = seedValue
-        seedData = await FF4FESeedGen.gen_fe_seed("Omode:ki12/random:2,quest/random2:1,tough_quest/req:all/win:crystal Kmain/summon/moon/nofree:dwarf/unweighted Pkey Cstandard/nofree/restrict:cecil,fusoya/j:abilities/paladin/nekkie/party:4/treasure:free Twildish Sprice:200/pricey:items/standard Bstandard/alt:gauntlet/whichbez Etoggle Glife/sylph/backrow -kit:better -smith:alt -fusoya:sequential_r -exp:objectivebonus25 -tweak:edwardheal", seedValue)
-        await self.set_bot_raceinfo(seedData["url"] + " Hash: " + seedData["verification"])
-        await self.send_message("Here's your seed: " + seedData["url"])
-        await self.send_message("Verification code: " + seedData["verification"])
+    #     await self.send_message("hold on, let me get that for you")
+    #     seedValue = self.generate_seed_value()
+    #     self.state['seed_id'] = seedValue
+    #     seedData = await FF4FESeedGen.gen_fe_seed("Omode:ki12/random:2,quest/random2:1,tough_quest/req:all/win:crystal Kmain/summon/moon/nofree:dwarf/unweighted Pkey Cstandard/nofree/restrict:cecil,fusoya/j:abilities/paladin/nekkie/party:4/treasure:free Twildish Sprice:200/pricey:items/standard Bstandard/alt:gauntlet/whichbez Etoggle Glife/sylph/backrow -kit:better -smith:alt -fusoya:sequential_r -exp:objectivebonus25 -tweak:edwardheal", seedValue)
+    #     await self.set_bot_raceinfo(seedData["url"] + " Hash: " + seedData["verification"])
+    #     await self.send_message("Here's your seed: " + seedData["url"])
+    #     await self.send_message("Verification code: " + seedData["verification"])
 
     async def ex_flags(self, args, message):
         """
@@ -238,17 +228,6 @@ class RandoHandler(RaceHandler):
         await self.send_seed_snark()
         if self.state.get('pinned_msg'):
             await self.unpin_message(self.state['pinned_msg'])
-
-    async def ex_seed(self, args, message):
-        """
-        Handle !seed commands.
-        """
-        
-        if self._race_in_progress():
-            return
-        seed = self.generate_seed_value()
-        await self.send_message(seed)
-        await self.send_seed_snark()
 
     def _race_pending(self):
         return self.data.get('status').get('value') == 'pending'
