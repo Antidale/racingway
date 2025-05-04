@@ -98,22 +98,18 @@ class RandoHandler(RaceHandler):
                 GREETING + random.choice(self.greetings),
                 actions=[
                     msg_actions.Action(
-                        label='Gimme gimme',
-                        help_text='Generates a preset. One specific preset',
-                        message='!preset',
+                        label='Roll Flags',
+                        help_text='Rolls flags for galeswift\'s fork',
+                        message='!flags ${flags}',
                         submit='Roll race seed',
+                        survey=msg_actions.Survey(
+                            msg_actions.TextInput(
+                                name="flags",
+                                placeholder="enter your flagstring here",
+                                label="flags"
+                            )
+                        )
                     ),
-                    msg_actions.Action(
-                        label='Clever Backup',
-                        help_text='Generates a seed value to roll at a website',
-                        message='!seed',
-                        submit='Roll race seed',
-                    ),
-                    # msg_actions.SelectInput(
-                    #     label='Preset',
-                    #     help_text='Generates a seed from a selection of presets',
-                    #     options={key: value['full_name'] for key, value in self.presets},
-                    # ),
                     msg_actions.ActionLink(
                         label='Help',
                         url='https://github.com/Antidale/racingway/blob/develop/README.md',
@@ -147,22 +143,29 @@ class RandoHandler(RaceHandler):
             and message.get('message_plain', '').startswith(GREETING)
         ):
             self.state['pinned_msg'] = message.get('id')
-        return await super().chat_message(data)
+
+        # pulled from racetime_bot/handler.py to avoid the automatic .lower() call on message data that'd be passed into commands
+        if message.get('is_bot') or message.get('is_system'):
+            self.logger.info('Ignoring bot/system message.')
+            return
+
+        words = message.get('message', '').split(' ')
+        if words and words[0].lower().startswith(self.command_prefix.lower()):
+            method = 'ex_' + words[0][len(self.command_prefix):]
+            args = words[1:]
+            if hasattr(self, method):
+                self.logger.info('[%(race)s] Calling handler for %(word)s' % {
+                    'race': self.data.get('name'),
+                    'word': words[0],
+                })
+                try:
+                    await getattr(self, method)(args, message)
+                except Exception as e:
+                    self.logger.error('Command raised exception.', exc_info=True)
 
     async def race_data(self, data):
         await super().race_data(data)
-        if self._race_pending() and self.state.get('password_active') and not self.state['password_published']:
-            await self.set_bot_raceinfo('%(seed_hash)s | Password: %(seed_password)s\n%(seed_url)s' % {
-                'seed_password': self.state['seed_password'],
-                'seed_hash': self.state['seed_hash'],
-                'seed_url': self.seed_url % self.state['seed_id'],
-            })
-            await self.send_message(
-                'This seed is password protected. To start a file, enter this password on the file select screen:\n'
-                '%(seed_password)s\nYou are allowed to enter the password before the race starts.'
-                % {'seed_password': self.state['seed_password']}
-            )
-            self.state['password_published'] = True
+
         if self._race_in_progress() and self.state.get('pinned_msg'):
             await self.unpin_message(self.state['pinned_msg'])
             del self.state['pinned_msg']
@@ -205,7 +208,7 @@ class RandoHandler(RaceHandler):
         if self.state.get('seed_id') and not can_moderate(message):
             await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
             return
-        
+
         await self.send_message("hold on, let me get that for you")
         seedValue = self.generate_seed_value()
         self.state['seed_id'] = seedValue
@@ -214,22 +217,38 @@ class RandoHandler(RaceHandler):
         await self.send_message("Here's your seed: " + seedData["url"])
         await self.send_message("Verification code: " + seedData["verification"])
 
+    async def ex_flags(self, args, message):
+        """
+        Handle !flags commands.
+        """
+
+        if self._race_in_progress() or not can_monitor(message):
+            return
+        
+        if self.state.get('seed_id') and not can_moderate(message):
+            await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
+            return
+
+        await self.send_preroll_snark()
+        seedValue = self.generate_seed_value()
+        self.state['seed_id'] = seedValue
+        flags = ' '.join(args)
+        seedData = await FF4FESeedGen.gen_fe_seed(flags, seedValue)
+        await self.set_bot_raceinfo(seedData["url"] + "\nHash: " + seedData["verification"])
+        await self.send_seed_snark()
+        if self.state.get('pinned_msg'):
+            await self.unpin_message(self.state['pinned_msg'])
+
     async def ex_seed(self, args, message):
         """
         Handle !seed commands.
         """
-        snark = (
-            'I recalled a seed I had forgotten.  Hopefully there wasn\'t a reason to forget it.',
-            'Please remember to keep your arms, legs, and spoon inside the seed at all times.',
-            'Well that seed\'s gone',
-            'Was it Random? I will show you how!',
-            'Seed has 34.3 percent chance of betrayal by dragoon.'
-        )
+        
         if self._race_in_progress():
             return
         seed = self.generate_seed_value()
         await self.send_message(seed)
-        await self.send_message(random.choice(snark))
+        await self.send_seed_snark()
 
     def _race_pending(self):
         return self.data.get('status').get('value') == 'pending'
@@ -241,3 +260,25 @@ class RandoHandler(RaceHandler):
         alphabet = string.ascii_uppercase + string.digits
         seed = ''.join(secrets.choice(alphabet) for i in range(10))
         return seed
+    
+    async def send_seed_snark(self):
+        snark = (
+            'I recalled a seed I had forgotten.  Hopefully there wasn\'t a reason to forget it.',
+            'Please remember to keep your arms, legs, and spoon inside the seed at all times.',
+            'Well that seed\'s gone',
+            'Was it Random? I will show you how!',
+            'Seed has 34.3 percent chance of betrayal by dragoon.'
+        )
+
+        await self.send_message(random.choice(snark))
+
+    async def send_preroll_snark(self):
+        snark = (
+            'Workin\' on it boss.',
+            'As you wish!',
+            'Would you like cheese with that?',
+            'Guac is extra.',
+            'It\'s a tiny town after all.'
+        )
+
+        await self.send_message(random.choice(snark))
