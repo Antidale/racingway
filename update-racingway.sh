@@ -3,6 +3,7 @@
 # kill current process, move current bot to backup, clear old log file
 kill $(ps aux | grep '[r]acingway' | awk '{print $2}')
 cd ~/src/racingway
+git pull
 
 #make sure things are set up correctly
 source ./ENV/bin/activate

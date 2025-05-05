@@ -5,7 +5,8 @@ import re
 import random
 import string
 import secrets
-from .fe_seed_gen import FF4FESeedGen
+from .fe_seed_gen import FF4FESeedGen, InvalidFlagString, SeedGenerationError
+from . import presets
 from racetime_bot import RaceHandler, monitor_cmd, can_moderate, can_monitor, msg_actions
 
 GREETING = "I'm a racebot! "
@@ -98,13 +99,37 @@ class RandoHandler(RaceHandler):
                     msg_actions.Action(
                         label='Roll',
                         help_text='Roll Flags',
-                        message='!flags ${flags}',
+                        message='!flags ${site} ${flags}',
                         submit='Roll',
                         survey=msg_actions.Survey(
+                            msg_actions.SelectInput(
+                                name="site",
+                                label="site",
+                                default="main",
+                                options={
+                                    'main':'main',
+                                    'galeswift':'galeswift',
+                                    # 'local':'local'
+                                }
+                            ),
                             msg_actions.TextInput(
                                 name="flags",
                                 placeholder="enter your flagstring here",
                                 label="flags"
+                            ),   
+                        )
+                    ),
+                    msg_actions.Action(
+                        label='Preset',
+                        help_text='Roll Preset Flags',
+                        message='!preset ${preset}',
+                        submit='Preset',
+                        survey=msg_actions.Survey(
+                            msg_actions.SelectInput(
+                                name="preset",
+                                label="preset",
+                                default="D2T",
+                                options=presets.get_presets(),
                             )
                         )
                     ),
@@ -157,76 +182,102 @@ class RandoHandler(RaceHandler):
         await super().race_data(data)
         await self.check_remove_bot_pin()
         
+    ############################
+    # COMMANDS
+    ############################
     # Temporary comment out of lock/unlock commands. Have to check with people on if they want restrictions on rolling
-    # @monitor_cmd
-    # async def ex_lock(self, args, message):
-    #     """
-    #     Handle !lock commands.
+    @monitor_cmd
+    async def ex_lock(self, args, message):
+        """
+        Handle !lock commands.
 
-    #     Prevent seed rolling unless user is a race monitor.
-    #     """
-    #     if self._race_in_progress():
-    #         return
-    #     self.state['locked'] = True
-    #     await self.send_message(
-    #         'Lock initiated. I will now only roll seeds for race monitors.'
-    #     )
+        Prevent seed rolling unless user is a race monitor.
+        """
+        if self._race_in_progress():
+            return
+        self.state['locked'] = True
+        await self.send_message(
+            'Lock initiated. I will now only roll seeds for race monitors.'
+        )
 
-    # @monitor_cmd
-    # async def ex_unlock(self, args, message):
-    #     """
-    #     Handle !unlock commands.
+    @monitor_cmd
+    async def ex_unlock(self, args, message):
+        """
+        Handle !unlock commands.
 
-    #     Remove lock preventing seed rolling unless user is a race monitor.
-    #     """
-    #     if self._race_in_progress():
-    #         return
-    #     self.state['locked'] = False
-    #     await self.send_message(
-    #         'Lock released. Anyone may now roll a seed.'
-    #     )
+        Remove lock preventing seed rolling unless user is a race monitor.
+        """
+        if self._race_in_progress():
+            return
+        self.state['locked'] = False
+        await self.send_message(
+            'Lock released. Anyone may now roll a seed.'
+        )
 
-    # async def ex_preset(self, args, message):
-    #     """
-    #     Handle !preset commands.
-    #     """
-    #     if self._race_in_progress():
-    #         return
-        
-    #     if self.state.get('seed_id') and not can_moderate(message):
-    #         await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
-    #         return
 
-    #     await self.send_message("hold on, let me get that for you")
-    #     seedValue = self.generate_seed_value()
-    #     self.state['seed_id'] = seedValue
-    #     seedData = await FF4FESeedGen.gen_fe_seed("Omode:ki12/random:2,quest/random2:1,tough_quest/req:all/win:crystal Kmain/summon/moon/nofree:dwarf/unweighted Pkey Cstandard/nofree/restrict:cecil,fusoya/j:abilities/paladin/nekkie/party:4/treasure:free Twildish Sprice:200/pricey:items/standard Bstandard/alt:gauntlet/whichbez Etoggle Glife/sylph/backrow -kit:better -smith:alt -fusoya:sequential_r -exp:objectivebonus25 -tweak:edwardheal", seedValue)
-    #     await self.set_bot_raceinfo(seedData["url"] + " Hash: " + seedData["verification"])
-    #     await self.send_message("Here's your seed: " + seedData["url"])
-    #     await self.send_message("Verification code: " + seedData["verification"])
+    async def ex_preset(self, args, message):
+        """
+        Handle !preset commands.
+        """
+        if (self.state.get('locked')) and not can_monitor(message):
+            return
+
+        if self.state.get('seed_id') and not can_moderate(message):
+            await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
+            return
+
+        preset_data = presets.get_preset_details(args[0])
+
+        await self.roll_seed(preset_data.flags, preset_data.host)
 
     async def ex_flags(self, args, message):
         """
         Handle !flags commands.
         """
-
-        if self._race_in_progress():
+        if (self.state.get('locked')) and not can_monitor(message):
             return
         
         if self.state.get('seed_id') and not can_moderate(message):
             await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
             return
 
-        await self.send_preroll_snark()
-
-        seedValue = self.generate_seed_value()
-
+        host = args.pop(0)
         flags = ' '.join(args)
-        seedData = await FF4FESeedGen.gen_fe_seed(flags, seedValue)
-        await self.set_bot_raceinfo(seedData["url"] + "\nHash: " + seedData["verification"])
-        await self.send_seed_snark()
-        await self.check_remove_bot_pin()
+        await self.roll_seed(flags, host)
 
+    async def ex_ff4flags(self, args, message):
+        """
+        Handle !ff4flags commands. Used as an easy replacement for people familiar with dr-race-bot
+        """
+        if (self.state.get('locked')) and not can_monitor(message):
+            return
+        
+        if self.state.get('seed_id') and not can_moderate(message):
+            await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
+            return
+
+        args.insert(0, 'main')
+        await self.ex_flags(args, message)
+
+    async def ex_ff4galeswift(self, args, message):
+        """
+        Handle !ff4galeswift commands. Used as an easy replacement for people familiar with dr-race-bot
+        """
+        if (self.state.get('locked')) and not can_monitor(message):
+            return
+        
+        if self.state.get('seed_id') and not can_moderate(message):
+            await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
+            return
+
+        args.insert(0, 'galeswift')
+        await self.ex_flags(args, message)
+
+
+
+    ############################
+    # Helper Methods
+    ############################
     def _race_pending(self):
         return self.data.get('status').get('value') == 'pending'
 
@@ -274,3 +325,34 @@ class RandoHandler(RaceHandler):
         if self.state.get('pinned_msg'):
             await self.unpin_message(self.state['pinned_msg'])
             del self.state['pinned_msg']
+
+    async def roll_seed(self, flags, host):
+        """
+        Handles actually rolling the seed, and catching exceptions during that process
+        """
+        if self._race_in_progress():
+            return
+
+        await self.send_preroll_snark()
+        seedValue = self.generate_seed_value()
+
+        try:
+            seedData = await FF4FESeedGen.gen_fe_seed(flags, host, seedValue)
+            await self.set_bot_raceinfo(seedData["url"] + "\n" + seedData["verification"])
+            await self.send_seed_snark()
+            await self.check_remove_bot_pin()
+        except NotImplementedError:
+            await self.send_message("That feature isn't implemented yet")
+            self.logger.error('Command raised exception.', exc_info=True)
+        except InvalidFlagString:
+            await self.send_message("Flag string was invalid")
+            self.logger.error('Command raised exception.', exc_info=True)
+        except SeedGenerationError:
+            await self.send_message("Error generating seed")
+            self.logger.error('Command raised exception.', exc_info=True)
+        except TimeoutError:
+            await self.send_message("Timed out on seed generation.")
+            self.logger.error('Command raised exception.', exc_info=True)
+        except Exception:
+            await self.send_message("I got Meganuked!")
+            self.logger.error('Command raised exception.', exc_info=True)
