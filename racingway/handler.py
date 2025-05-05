@@ -135,7 +135,7 @@ class RandoHandler(RaceHandler):
                     ),
                     msg_actions.ActionLink(
                         label='Help',
-                        url='https://github.com/Antidale/racingway/blob/develop/README.md',
+                        url='https://github.com/Antidale/racingway/blob/main/README.md',
                     ),
                 ],
                 pinned=True,
