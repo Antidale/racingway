@@ -1,0 +1,1 @@
+ssh $TL_USER$TL_ADDRESS './update-rway.sh; exit'

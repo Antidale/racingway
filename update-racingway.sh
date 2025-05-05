@@ -5,7 +5,7 @@ kill $(ps aux | grep '[r]acingway' | awk '{print $2}')
 cd ~/src/racingway
 
 #make sure things are set up correctly
-source ~/.bash_profile
+source ./ENV/bin/activate
 pip install -e .
 
 nohup racingway ff4fe $Racetime_Client_Id $Racetime_Client_Secret -v >> nohup.out 2>&1 &
