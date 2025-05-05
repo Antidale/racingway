@@ -225,8 +225,8 @@ class RandoHandler(RaceHandler):
         if self.state.get('seed_id') and not can_moderate(message):
             await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
             return
-
-        preset_data = presets.get_preset_details(args[0])
+        preset_choice = ' '.join(args)
+        preset_data = presets.get_preset_details(preset_choice)
 
         await self.roll_seed(preset_data.flags, preset_data.host)
 
