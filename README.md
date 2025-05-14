@@ -24,7 +24,9 @@ Omode:ki11/req:all/win:crystal Kmain/summon/moon/miab:above,below Pshop Cstandar
 ```
 
 ## !preset $preset_name
-Presets have been implemented, and you can either use the `Preset...` button on the pinned message in a racetime room to select a preset, or you can use the `!preset` command directly in chat. Current preset options are: D2T, Sumomo, SMS, AC_Group, ZZ6, and Pro_B_Otics. The preset names should be case insensitive to use in the chat command.
+Presets have been implemented, and you can either use the `Preset...` button on the pinned message in a racetime room to select a preset, or you can use the `!preset` command directly in chat. Current preset options are: D2T, Sumomo, SMS, AC_Group, ZZ6, Pro_B_Otics, ACE, FBF, and ZZA. The preset names should be case insensitive to use in the chat command.
+
+To see details on the presets, look at the [presets.py](./racingway/presets.py) file.
 
 ## !lock
 Usable by a [race monitor](https://github.com/racetimeGG/racetime-app/wiki/Roles-and-permissions#race-monitor). When used, prevents anyone who is not a race monitor from rolling a seed
