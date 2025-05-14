@@ -9,8 +9,27 @@ def get_presets():
         'Pro_B_Otics': 'Pro B Otics',
     }
 
+def get_afc_presets():
+    return {
+        'ACE': 'Adamant Cup Experience',
+        'FBF': 'Firebomb Fiesta',
+        'ZZA': 'Zemus Zone: Anthology',
+    }
+
 def get_preset_details(preset):
     match preset.lower().replace('-','').replace('_','').replace(' ',''):
+        case 'ace':
+            return PresetDetails(
+                flags='Omode:ki12/random:2,quest/random2:1,tough_quest/req:all/win:crystal Kmain/summon/moon/nofree:dwarf/unweighted Pkey Cstandard/nofree/restrict:cecil,fusoya/j:abilities/paladin/nekkie/party:4/treasure:free,unsafe Twildish Sprice:200/pricey:items/standard Bstandard/alt:gauntlet/whichbez Etoggle Glife/sylph/backrow -kit:better -smith:alt -fusoya:sequential_r -exp:objectivebonus25 -tweak:edwardheal',
+                host='galeswift')
+        case 'fbf':
+            return PresetDetails(
+                flags='O1:quest_forge/2:quest_cavebahamut/3:quest_monsterking/4:quest_monsterqueen/5:quest_masamunealtar/random:3,tough_quest/req:6/win:game Kmain/miab:above/pink/nofree:package/force:magma Pnone Cstandard/nofree/distinct:7/start:not_tellah,not_fusoya/no:fusoya/restrict:cecil/j:abilities/nekkie/nodupes/hero Twildish/mintier:2/money Swild/always:damage_items/no:j Bstandard/nofree/unsafe/alt:gauntlet/whichburn/whichbez/woahdin Etoggle/noexp/nogp Gwarp/life/sylph/backrow -kit:dwarf -kit2:miab -kit3:basic -noadamants -nocursed -spoon -exp:kicheckbonus2 -tweak:edwardheal',
+                host='galeswift')
+        case 'zza':
+            return PresetDetails(
+                flags='O1:quest_forge/req:all/win:crystal Kmain/moon/pink/nofree/unweighted/start:spoon Pkey Crelaxed/nofree/distinct:8/thrift:3/j:abilities/nodupes/hero Tsemipro/playable/junk Swildish/no:vampires,damage_items Bstandard/restrict:giant,package/whichburn/whichbez Etoggle Glife/sylph/backrow/64 -kit:freedom -noadamants -fusoya:maybe -exp:maxlevelbonus -tweak:edwardheal',
+                host='galeswift')
         case 'd2t': 
             return PresetDetails(
                 flags='Omode:ki11/req:all/win:crystal Kmain/summon/moon/miab:above,below Pshop Cstandard/nofree/start:not_tellah/thrift:4/j:abilities/hero Tstandard Swildish/no:sirens Bstandard/alt:gauntlet/whichburn/whichbez Etoggle Glife/sylph/backrow -kit:basic -kit2:freedom -kit3:exit -noadamants -spoon -exp:nokeybonus,kicheckbonus5,maxlevelbonus -doorsrando:all',
@@ -43,7 +62,7 @@ def get_preset_details(preset):
             )
         case _:
             raise NotImplementedError("Preset option not implemented")
-        
+
 class PresetDetails():
     def __init__(self, flags, host):
         self.flags = flags
