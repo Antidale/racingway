@@ -97,6 +97,20 @@ class RandoHandler(RaceHandler):
                 GREETING + random.choice(self.greetings),
                 actions=[
                     msg_actions.Action(
+                        label='AFC',
+                        help_text='Roll Preset Flags',
+                        message='!preset ${preset}',
+                        submit='Roll Preset',
+                        survey=msg_actions.Survey(
+                            msg_actions.SelectInput(
+                                name="preset",
+                                label="preset",
+                                default="AFC",
+                                options=presets.get_afc_presets(),
+                            )
+                        )
+                    ),
+                    msg_actions.Action(
                         label='Roll',
                         help_text='Roll Flags',
                         message='!flags ${site} ${flags}',
