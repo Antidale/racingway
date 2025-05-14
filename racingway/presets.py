@@ -7,6 +7,9 @@ def get_presets():
         'AC_Group': 'Adamant Cup: Groups',
         'ZZ6': 'ZZ6',
         'Pro_B_Otics': 'Pro B Otics',
+        'ACE': 'Adamant Cup Experience',
+        'FBF': 'Firebomb Fiesta',
+        'ZZA': 'Zemus Zone: Anthology',
     }
 
 def get_afc_presets():
