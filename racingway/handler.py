@@ -104,17 +104,17 @@ class RandoHandler(RaceHandler):
                         survey=msg_actions.Survey(
                             msg_actions.SelectInput(
                                 name="preset",
-                                label="preset",
-                                default="AFC",
+                                label="choice",
+                                default="ACE",
                                 options=presets.get_afc_presets(),
                             )
                         )
                     ),
                     msg_actions.Action(
-                        label='Roll',
+                        label='Flags',
                         help_text='Roll Flags',
                         message='!flags ${site} ${flags}',
-                        submit='Roll',
+                        submit='Roll Flags',
                         survey=msg_actions.Survey(
                             msg_actions.SelectInput(
                                 name="site",
@@ -137,11 +137,11 @@ class RandoHandler(RaceHandler):
                         label='Preset',
                         help_text='Roll Preset Flags',
                         message='!preset ${preset}',
-                        submit='Preset',
+                        submit='Roll Preset',
                         survey=msg_actions.Survey(
                             msg_actions.SelectInput(
                                 name="preset",
-                                label="preset",
+                                label="choice",
                                 default="D2T",
                                 options=presets.get_presets(),
                             )
