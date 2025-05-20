@@ -81,9 +81,6 @@ class RandoHandler(RaceHandler):
         super().__init__(**kwargs)
 
     async def should_stop(self):
-        if self.data.get('opened_by') is None:
-            # This is okay because Racingway does not open any rooms.
-            return True
         return await super().should_stop()
 
     async def begin(self):
