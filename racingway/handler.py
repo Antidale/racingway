@@ -8,6 +8,7 @@ import secrets
 from .fe_seed_gen import FF4FESeedGen, InvalidFlagString, SeedGenerationError
 from . import presets
 from racetime_bot import RaceHandler, monitor_cmd, can_moderate, can_monitor, msg_actions
+from .log_seed import FeInfoSeedLogger
 
 GREETING = "I'm a racebot! "
 
@@ -325,6 +326,9 @@ class RandoHandler(RaceHandler):
             'Would you like cheese with that?',
             'Guac is extra.',
             'It\'s a tiny town after all.'
+            'I\'m the danger.'
+            'Really hoping for a nice turtle seed.'
+
         )
 
         await self.send_message(random.choice(snark))
@@ -352,6 +356,11 @@ class RandoHandler(RaceHandler):
             await self.set_bot_raceinfo(seedData["url"] + "\n" + seedData["verification"])
             await self.send_seed_snark()
             await self.check_remove_bot_pin()
+
+            try:
+                await FeInfoSeedLogger.log_rolled_seed(seedData)
+            except Exception:
+                self.logger.error('Failed to log seed', exc_info=True)
         except NotImplementedError:
             await self.send_message("That feature isn't implemented yet")
             self.logger.error('Command raised exception.', exc_info=True)
