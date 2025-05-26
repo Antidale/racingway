@@ -309,9 +309,13 @@ class RandoHandler(RaceHandler):
         snark = (
             'I recalled a seed I had forgotten.  Hopefully there wasn\'t a reason to forget it.',
             'Please remember to keep your arms, legs, and spoon inside the seed at all times.',
-            'Well that seed\'s gone',
+            'Well that seed\'s gone. . .',
             'Was it Random? I will show you how!',
             'Seed has 34.3 percent chance of betrayal by dragoon.'
+            'Set your watches to Wyvern Daylight Time.'
+            'I hope you start with Kain!'
+            'Bosa?'
+            ''
         )
 
         await self.send_message(random.choice(snark))
@@ -325,10 +329,16 @@ class RandoHandler(RaceHandler):
             'As you wish!',
             'Would you like cheese with that?',
             'Guac is extra.',
-            'It\'s a tiny town after all.'
-            'I\'m the danger.'
-            'Really hoping for a nice turtle seed.'
-
+            'It\'s a tiny town after all.',
+            'I\'m not in danger. I\'m the danger.',
+            'Really hopin\' for a nice bowl of soup.',
+            'If you came to kill Chaos, this is the wrong game.',
+            'Ice rods are easy to find!',
+            'I love plums for breakfast.',
+            'Men thnk they are better than grass',
+            'Ahh! Z, Mandy, us!',
+            'Time to turn back and descend the stair',
+            'Do you have any ore? I have sheep!'
         )
 
         await self.send_message(random.choice(snark))
