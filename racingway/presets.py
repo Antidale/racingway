@@ -1,6 +1,15 @@
 
 def get_presets():
     return {
+        'ACE': 'Adamant Cup Experience',
+        'FBF': 'Firebomb Fiesta',
+        'ZZA': 'Zemus Zone: Anthology',
+        'PPC': 'Plink Pony Club',
+        'Kchar': 'Intro to Kchar',
+        'HoldHero': 'Holding out for a Hero',
+        'DM5': 'Dark Matter, 5.0',
+        'YSN': 'You Spoony Ninja',
+        'Angry': 'Angry Bird',
         'D2T': 'Doorway To Tomorrow',
         'Sumomo': 'Sumomo',
         'SMS': 'Supermarket Sweep',
@@ -18,6 +27,36 @@ def get_afc_presets():
 
 def get_preset_details(preset):
     match preset.lower().replace('-','').replace('_','').replace(' ',''):
+        case 'ppc':
+            return PresetDetails(
+                flags='OArandom:4,tough_quest/do_2:spoon/do_4:superweapon OBrandom:4,char/do_2:ribbon/do_4:adamantarmor OC1:collect_boss13/random:4,boss/do_3:siren/do_5:cursedring ODgroup_a:all/group_b:all/group_c:all/do_2:crystal Kmain/summon/moon/miab:lst/char/nofree Pkey Cstandard/nofree/nogiant/distinct:8/start:any/j:abilities/nekkie/nodupes/hero Tpro/playable Sstandard/playable/no:sirens Bchaos/alt:gauntlet/chaosburn Etoggle Xobjbonus:5 Gwarp/life/sylph/backrow Qfastrom/msgspeedfix -kit:better -noadamants -nocursed -smith:alt,playable',
+                host='alpha'
+            )
+        case 'kchar':
+            return PresetDetails(
+                flags='OA1:collect_ki10/2:quest_forge/do_all:crystal Kmain/miab:above/char Pkey Cstandard/nofree/start:edge/j:abilities Twildish Sstandard Bstandard/alt:gauntlet/whyburn Etoggle Glife/sylph/backrow Qmsgspeedfix -kit:better -spoon -smith:super',
+                host='alpha'
+            )
+        case 'holdhero':
+            return PresetDetails(
+                flags='OA1:collect_ki8/do_all:cecil OB1:collect_ki9/do_all:crystalsword OC1:collect_ki10/do_all:crystal Kmain/summon/moon/miab:above/char/forge/nofree Pkey Cstandard/no:cecil,fusoya/nekkie/party:4/permajoin/wishes Tstandard Sstandard Bchaos/alt:gauntlet/chaosburn Etoggle Xobjbonus:10 Gwarp/life/backrow Qfastrom/msgspeedfix -kit:freedom -kit2:miab -noadamants -nocursed -spoon -vanilla:agility',
+                host='alpha'
+            )
+        case 'dm5':
+            return PresetDetails(
+                flags='Omode_dkmatter:quests/win:crystal OA1:collect_dkmatter20/do_all:superweapon Kmain/summon/miab:above/char/nofree Pkey Cstandard/nofree/distinct:8/j:abilities/nodupes/hero Tpro/playable Sstandard Bchaos/alt:gauntlet/chaosburn Etoggle Xnokeybonus/objbonus:10 Gwarp/life/sylph/backrow Qfastrom/msgspeedfix -kit:better -kit2:freedom -noadamants -spoon -smith:alt,playable',
+                host='alpha'
+            )
+        case 'ysn':
+            return PresetDetails(
+                flags='OA1:quest_monsterqueen/2:quest_monsterking/3:quest_murasamealtar/4:quest_crystalaltar/5:quest_whitealtar/6:quest_ribbonaltar/7:quest_masamunealtar/8:quest_baronbasement/random:3,quest/do_1:spoon/do_2:spoon/do_3:spoon/do_4:spoon/do_5:spoon/do_6:spoon/do_7:spoon/do_8:spoon/do_9:spoon/do_10:spoon/do_all:spoon OB1:quest_forge/2:quest_tradepan/3:quest_sealedcave/4:quest_tradepink/do_1:spoon/do_2:spoon/do_3:crystal Kmain/summon/moon Pkey Crelaxed/nofree/distinct:7/start:edge/j:abilities/nekkie Tpro/playable/sparse:70/miabs:standard Sstandard Bchaos/chaosburn Etoggle Xnoboost/nokeybonus/objbonus:10 Glife/sylph/backrow Qfastrom/msgspeedfix -kit:better -kit2:meme -kit3:money -noadamants -smith:alt',
+                host='alpha'
+            )
+        case 'angry':
+            return PresetDetails(
+                flags='OA1:boss_ogopogo/2:boss_paledim/3:boss_wyvern/4:boss_plague/5:boss_dlunar/do_2:siren/do_4:cursedring OB1:collect_boss5/2:collect_boss15/3:collect_boss23/group_a:all/do_1:moonveil/do_2:adamantarmor/do_3:crystal/do_4:game Kmain/summon/moon Pkey Cstandard/nofree/maybe/j:abilities/nodupes/hero Tstandard/playable/miabs:wildish Sstandard/playable/no:sirens Bchaos/alt:gauntlet/chaosburn Etoggle Xobjbonus:16 Gwarp/life/sylph/backrow Qfastrom/msgspeedfix -kit:better -noadamants -nocursed',
+                host='alpha'
+            )
         case 'ace':
             return PresetDetails(
                 flags='Omode:ki12/random:2,quest/random2:1,tough_quest/req:all/win:crystal Kmain/summon/moon/nofree:dwarf/unweighted Pkey Cstandard/nofree/restrict:cecil,fusoya/j:abilities/paladin/nekkie/party:4/treasure:free,unsafe Twildish Sprice:200/pricey:items/standard Bstandard/alt:gauntlet/whichbez Etoggle Glife/sylph/backrow -kit:better -smith:alt -fusoya:sequential_r -exp:objectivebonus25 -tweak:edwardheal',

@@ -8,7 +8,7 @@ class ApiHost:
 
 def get_api_info(hostType):
     hostType = hostType.upper()
-    if hostType not in ["MAIN", "GALESWIFT", "LOCAL"]:
+    if hostType not in ["MAIN", "GALESWIFT", "ALPHA", "LOCAL"]:
         raise NotImplementedError(f'{hostType} is not implemented yet')
     
     url = ''
@@ -16,6 +16,8 @@ def get_api_info(hostType):
         url = 'http://ff4fe.com'
     elif hostType == "GALESWIFT":
         url = 'https://ff4fe.galeswift.com'
+    elif hostType == "ALPHA":
+        url = 'https://alpha.ff4fe.com'
     else:
         url = 'http://127.0.0.1:8080'
     
