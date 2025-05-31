@@ -121,6 +121,7 @@ class RandoHandler(RaceHandler):
                                 options={
                                     'main':'main',
                                     'galeswift':'galeswift',
+                                    'alpha':'alpha'
                                     # 'local':'local'
                                 }
                             ),
@@ -226,7 +227,6 @@ class RandoHandler(RaceHandler):
             'Lock released. Anyone may now roll a seed.'
         )
 
-
     async def ex_preset(self, args, message):
         """
         Handle !preset commands.
@@ -248,7 +248,7 @@ class RandoHandler(RaceHandler):
         """
         if (self.state.get('locked')) and not can_monitor(message):
             return
-        
+
         if self.state.get('seed_id') and not can_moderate(message):
             await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
             return
@@ -263,7 +263,7 @@ class RandoHandler(RaceHandler):
         """
         if (self.state.get('locked')) and not can_monitor(message):
             return
-        
+
         if self.state.get('seed_id') and not can_moderate(message):
             await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
             return
@@ -277,12 +277,26 @@ class RandoHandler(RaceHandler):
         """
         if (self.state.get('locked')) and not can_monitor(message):
             return
-        
+
         if self.state.get('seed_id') and not can_moderate(message):
             await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
             return
 
         args.insert(0, 'galeswift')
+        await self.ex_flags(args, message)
+
+    async def ex_ff4alpha(self, args, message):
+        """
+        Handle !ff4galeswift commands. Used as an easy replacement for people familiar with dr-race-bot
+        """
+        if (self.state.get('locked')) and not can_monitor(message):
+            return
+
+        if self.state.get('seed_id') and not can_moderate(message):
+            await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
+            return
+
+        args.insert(0, 'alpha')
         await self.ex_flags(args, message)
 
 
