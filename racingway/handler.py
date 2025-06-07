@@ -357,7 +357,10 @@ class RandoHandler(RaceHandler):
             'Men think they are better than grass',
             'Ahh! Z, Mandy, us!',
             'Time to turn back and descend the stair',
-            'Do you have any ore? I have sheep!'
+            'Do you have any ore? I have sheep!',
+            'Maybe everything that falls down eventually rises.',
+            'What we lose in the flame, we gain in the flood.',
+            'I agree, you were right to say we\'re doomed.',
         )
 
         await self.send_message(random.choice(snark))
