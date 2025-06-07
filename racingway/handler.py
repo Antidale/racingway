@@ -10,7 +10,7 @@ from . import presets
 from racetime_bot import RaceHandler, monitor_cmd, can_moderate, can_monitor, msg_actions
 from .log_seed import FeInfoSeedLogger
 
-GREETING = "I'm a racebot! "
+GREETING = ""
 
 def natjoin(sequence, default):
     if len(sequence) == 0:
@@ -92,7 +92,7 @@ class RandoHandler(RaceHandler):
             return
         if not self.state.get('intro_sent') and not self._race_in_progress():
             await self.send_message(
-                GREETING + random.choice(self.greetings),
+                GREETING = random.choice(self.greetings),
                 actions=[
                     msg_actions.Action(
                         label='AFC',
