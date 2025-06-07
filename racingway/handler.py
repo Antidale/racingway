@@ -75,7 +75,7 @@ class RandoHandler(RaceHandler):
         'Only the best players fade Antlion',
         'I\'m here to repair the refund machine',
         'Would you like a good plate of brisky?',
-        'Eblan, come for the treasure, say for the monsters!',
+        'Eblan Castle: come for the treasure, stay for the monsters!'
     )
 
     def __init__(self, **kwargs):
