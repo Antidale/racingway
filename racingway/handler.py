@@ -325,11 +325,16 @@ class RandoHandler(RaceHandler):
             'Please remember to keep your arms, legs, and spoon inside the seed at all times.',
             'Well that seed\'s gone. . .',
             'Was it Random? I will show you how!',
-            'Seed has 34.3 percent chance of betrayal by dragoon.'
-            'Set your watches to Wyvern Daylight Time.'
-            'I hope you start with Kain!'
-            'Bosa?'
-            ''
+            'Seed has 34.3 percent chance of betrayal by dragoon.',
+            'Set your watches to Wyvern Daylight Time.',
+            'I hope you start with Kain!',
+            'Bosa?',
+            'Phew, for a minute there, I lost myself.',
+            'Gas \'em up with the greens and let him go',
+            'It was offered to me by name',
+            'Don\'t blame me. Blame yourself, or God.',
+            'There\'s something lurking in the water. You better swim a little faster now',
+
         )
 
         await self.send_message(random.choice(snark))
@@ -349,7 +354,7 @@ class RandoHandler(RaceHandler):
             'If you came to kill Chaos, this is the wrong game.',
             'Ice rods are easy to find!',
             'I love plums for breakfast.',
-            'Men thnk they are better than grass',
+            'Men think they are better than grass',
             'Ahh! Z, Mandy, us!',
             'Time to turn back and descend the stair',
             'Do you have any ore? I have sheep!'
