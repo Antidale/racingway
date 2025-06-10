@@ -1,8 +1,7 @@
 '''
 Code for logging races
 '''
-import requests
-import os
+from .fe_info import FeInfoApi
 
 class LogRaceRoom():
     def new_seed_log(room_name, creator_id, description, goal):
@@ -24,7 +23,4 @@ class RaceLogger():
         if creator is not None:
             creator_id = creator.get('full_name')
         payload = LogRaceRoom.new_seed_log(room_name, creator_id, description, goal)
-        # url = "https://localhost:5001/api/Races"
-        url = "https://free-enterprise-info-api.herokuapp.com/api/Races"
-        header = { 'Api-Key': os.environ['FE_Info_Api_Key'] }
-        return requests.post(url=url, json=payload, headers=header)
+        return await FeInfoApi.log_race_room(payload)
