@@ -9,6 +9,7 @@ from .fe_seed_gen import FF4FESeedGen, InvalidFlagString, SeedGenerationError
 from . import presets
 from racetime_bot import RaceHandler, monitor_cmd, can_moderate, can_monitor, msg_actions
 from .log_seed import FeInfoSeedLogger
+from .log_race import RaceLogger
 
 def natjoin(sequence, default):
     if len(sequence) == 0:
@@ -151,7 +152,7 @@ class RandoHandler(RaceHandler):
                 ],
                 pinned=True,
             )
-            self.state.setdefault('draft_data', {})
+
             self.state['intro_sent'] = True
         if 'locked' not in self.state:
             self.state['locked'] = False
@@ -191,6 +192,12 @@ class RandoHandler(RaceHandler):
     async def race_data(self, data):
         await super().race_data(data)
         await self.check_remove_bot_pin()
+        race = data.get('race')
+        name = race.get('name')
+        opened_by = race.get('opened_by')
+        info = race.get('info_user')
+        goal = race.get('goal')
+        response =await RaceLogger.log_race_created(name, opened_by, info, goal.get('name'))
         
     ############################
     # COMMANDS
