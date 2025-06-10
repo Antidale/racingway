@@ -27,4 +27,4 @@ class RaceLogger():
         # url = "https://localhost:5001/api/Races"
         url = "https://free-enterprise-info-api.herokuapp.com/api/Races"
         header = { 'Api-Key': os.environ['FE_Info_Api_Key'] }
-        return requests.post(url=url, json=payload, headers=header, verify=False)
+        return requests.post(url=url, json=payload, headers=header)
