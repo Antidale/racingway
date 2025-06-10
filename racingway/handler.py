@@ -192,16 +192,19 @@ class RandoHandler(RaceHandler):
     async def race_data(self, data):
         await super().race_data(data)
         await self.check_remove_bot_pin()
-        race = data.get('race')
-        name = race.get('name')
-        opened_by = race.get('opened_by')
-        info = race.get('info_user')
-        goal = race.get('goal')
-        try:
-            response = await RaceLogger.log_race_created(name, opened_by, info, goal.get('name'))
-            self.logger.info('race logged')
-        except Exception as e:
-            self.logger.error('Race logging created exception.', exc_info=True)
+
+        if (self.state.get('race_id') is None):
+            race = data.get('race')
+            name = race.get('name')
+            opened_by = race.get('opened_by')
+            info = race.get('info_user')
+            goal = race.get('goal')
+            try:
+                response = await RaceLogger.log_race_created(name, opened_by, info, goal.get('name'))
+                self.logger.info('race logged')
+                self.state['race_id'] = response
+            except Exception as e:
+                self.logger.error('Race logging created exception.', exc_info=True)
         
     ############################
     # COMMANDS

@@ -10,7 +10,7 @@ header = { 'Api-Key': os.environ['FE_Info_Api_Key'] }
 is_debug = os.environ['racingway_debug'] is not None
 
 if (is_debug):
-    base_url = "https://localhost:5001/api/Races"
+    base_url = "https://localhost:5001/api/"
     header = { 'Api-Key': os.environ['FE_Info_Local_Key'] }
     
 
@@ -20,7 +20,7 @@ class FeInfoApi():
         return requests.post(url=url, json=payload, headers=header)
     
     async def log_race_room(payload):
-        url = base_url + "Seed"
+        url = base_url + "Races"
 
         if(is_debug):
             return requests.post(url=url, json=payload, headers=header, verify=False)
