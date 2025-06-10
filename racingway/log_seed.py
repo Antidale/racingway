@@ -1,8 +1,7 @@
 '''
 Code for logging generated seeds to feinfo
 '''
-import requests
-import os
+from .fe_info import FeInfoApi
 
 class LogSeedRequest():
     def new_log_request(seedinfo):
@@ -21,8 +20,5 @@ class LogSeedRequest():
 class FeInfoSeedLogger():          
     async def log_rolled_seed(seed_info):
         payload = LogSeedRequest.new_log_request(seed_info)
-        # url = "https://localhost:5001/api/Seed"
-        url = "https://free-enterprise-info-api.herokuapp.com/api/Seed"
-        header = { 'Api-Key': os.environ['FE_Info_Api_Key'] }
-        return requests.post(url=url, json=payload, headers=header)
+        return await FeInfoApi.log_rolled_seed(payload)
         
