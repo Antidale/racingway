@@ -10,6 +10,7 @@ from . import presets
 from racetime_bot import RaceHandler, monitor_cmd, can_moderate, can_monitor, msg_actions
 from .log_seed import FeInfoSeedLogger
 from .log_race import RaceLogger
+from .choices import *
 
 def natjoin(sequence, default):
     if len(sequence) == 0:
@@ -67,15 +68,6 @@ class RandoHandler(RaceHandler):
     """
     stop_at = ['cancelled', 'finished']
     max_status_checks = 50
-    greetings = (
-        'Tip: Baron Inn is the best place for up to date news and extras',
-        'Can I interest you in a hook route?',
-        'Why do the seeds keep increasing?',
-        'Only the best players fade Antlion',
-        'I\'m here to repair the refund machine',
-        'Would you like a good plate of brisky?',
-        'Eblan Castle: come for the treasure, stay for the monsters!'
-    )
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -91,7 +83,7 @@ class RandoHandler(RaceHandler):
             return
         if not self.state.get('intro_sent') and not self._race_in_progress():
             await self.send_message(
-                random.choice(self.greetings),
+                random.choice(get_greetings()),
                 actions=[
                     msg_actions.Action(
                         label='AFC',
@@ -310,6 +302,12 @@ class RandoHandler(RaceHandler):
         args.insert(0, 'alpha')
         await self.ex_flags(args, message)
 
+    async def ex_eatcookie(self, args, message):
+        await self.send_message(random.choice(get_cookies()))
+
+    async def ex_hook(self, args, message):
+        await self.send_message(random.choice(get_hook()))
+
 
 
     ############################
@@ -331,50 +329,16 @@ class RandoHandler(RaceHandler):
         return seed
     
     async def send_seed_snark(self):
-        snark = (
-            'I recalled a seed I had forgotten.  Hopefully there wasn\'t a reason to forget it.',
-            'Please remember to keep your arms, legs, and spoon inside the seed at all times.',
-            'Well that seed\'s gone. . .',
-            'Was it Random? I will show you how!',
-            'Seed has 34.3 percent chance of betrayal by dragoon.',
-            'Set your watches to Wyvern Daylight Time.',
-            'I hope you start with Kain!',
-            'Bosa?',
-            'Phew, for a minute there, I lost myself.',
-            'Gas \'em up with the greens and let him go',
-            'It was offered to me by name',
-            'Don\'t blame me. Blame yourself, or God.',
-            'There\'s something lurking in the water. You better swim a little faster now',
-
-        )
-
-        await self.send_message(random.choice(snark))
+        """
+        Sends a bit of text to the room to help further be all "bot is done!"
+        """
+        await self.send_message(random.choice(get_post_roll_snark()))
 
     async def send_preroll_snark(self):
         """
         Sends a bit of text to the room to indicate that a command is underway
         """
-        snark = (
-            'Workin\' on it boss.',
-            'As you wish!',
-            'Would you like cheese with that?',
-            'Guac is extra.',
-            'It\'s a tiny town after all.',
-            'I\'m not in danger. I\'m the danger.',
-            'Really hopin\' for a nice bowl of soup.',
-            'If you came to kill Chaos, this is the wrong game.',
-            'Ice rods are easy to find!',
-            'I love plums for breakfast.',
-            'Men think they are better than grass',
-            'Ahh! Z, Mandy, us!',
-            'Time to turn back and descend the stair',
-            'Do you have any ore? I have sheep!',
-            'Maybe everything that falls down eventually rises.',
-            'What we lose in the flame, we gain in the flood.',
-            'I agree, you were right to say we\'re doomed.',
-        )
-
-        await self.send_message(random.choice(snark))
+        await self.send_message(random.choice(get_pre_roll_snark()))
 
     async def check_remove_bot_pin(self):
         """
