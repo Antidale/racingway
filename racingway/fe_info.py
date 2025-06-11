@@ -7,7 +7,11 @@ import os
 base_url = "https://free-enterprise-info-api.herokuapp.com/api/"
 header = { 'Api-Key': os.environ['FE_Info_Api_Key'] }
 
-is_debug = os.environ['racingway_debug'] is not None
+is_debug = False
+try:
+    is_debug = os.environ['racingway_debug']
+except Exception:
+    is_debug = False
 
 if (is_debug):
     base_url = "https://localhost:5001/api/"
