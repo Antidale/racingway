@@ -368,18 +368,24 @@ class RandoHandler(RaceHandler):
                 await FeInfoSeedLogger.log_rolled_seed(seedData)
             except Exception:
                 self.logger.error('Failed to log seed', exc_info=True)
+
         except NotImplementedError:
             await self.send_message("That feature isn't implemented yet")
             self.logger.error('Command raised exception.', exc_info=True)
+            self.state['seed_id'] = None
         except InvalidFlagString:
             await self.send_message("Flag string was invalid")
             self.logger.error('Command raised exception.', exc_info=True)
+            self.state['seed_id'] = None
         except SeedGenerationError:
             await self.send_message("Error generating seed")
             self.logger.error('Command raised exception.', exc_info=True)
+            self.state['seed_id'] = None
         except TimeoutError:
             await self.send_message("Timed out on seed generation.")
             self.logger.error('Command raised exception.', exc_info=True)
+            self.state['seed_id'] = None
         except Exception:
             await self.send_message("I got Meganuked!")
             self.logger.error('Command raised exception.', exc_info=True)
+            self.state['seed_id'] = None
