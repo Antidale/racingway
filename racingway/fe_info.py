@@ -21,12 +21,12 @@ if (is_debug):
 class FeInfoApi():
     async def log_rolled_seed(payload):
         url = base_url + "Seed"
-        return requests.post(url=url, json=payload, headers=header)
-    
+        return requests.post(url=url, json=payload, headers=header).json()
+
     async def log_race_room(payload):
         url = base_url + "Races"
 
         if(is_debug):
-            return requests.post(url=url, json=payload, headers=header, verify=False)
+            return requests.post(url=url, json=payload, headers=header, verify=False).json()
         else:
-            return requests.post(url=url, json=payload, headers=header)
+            return requests.post(url=url, json=payload, headers=header).json()
