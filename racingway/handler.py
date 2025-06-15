@@ -12,6 +12,8 @@ from .log_seed import FeInfoSeedLogger
 from .log_race import RaceLogger
 from .choices import *
 
+ALPHABET = string.ascii_uppercase + string.digits
+
 def natjoin(sequence, default):
     if len(sequence) == 0:
         return str(default)
@@ -323,8 +325,8 @@ class RandoHandler(RaceHandler):
         """
         Generates a 10 character alphanumeric string for the seed, sets it as state['seed_id'] and returns the value.
         """
-        alphabet = string.ascii_uppercase + string.digits
-        seed = ''.join(secrets.choice(alphabet) for i in range(10))
+
+        seed = ''.join(secrets.choice(ALPHABET) for i in range(10))
         self.state['seed_id'] = seed
         return seed
     
