@@ -19,7 +19,7 @@ class LogRaceRoom():
 class RaceLogger():
     async def log_race_created(room_name, creator, description, goal):
         #default to racingway's discord id
-        creator_id = 1375651965371027557
+        creator_id = "1375651965371027557"
         if creator is not None:
             creator_id = creator.get('full_name')
         payload = LogRaceRoom.new_seed_log(room_name, creator_id, description, goal)

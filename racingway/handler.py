@@ -187,18 +187,28 @@ class RandoHandler(RaceHandler):
         await super().race_data(data)
         await self.check_remove_bot_pin()
 
-        if (self.state.get('race_id') is None):
+        if self.data.get('race_name') is None:
             race = data.get('race')
             name = race.get('name')
+            self.state['race_name'] = name
+
+        # If bot opened the room, they should handle logging the race creation
+        if self.data.get('opened_by') is None:
+            return
+        
+        # Restrict room creation to a single good call
+        if (self.state.get('race_id') is None):
             opened_by = race.get('opened_by')
             info = race.get('info_user')
             goal = race.get('goal')
             try:
                 response = await RaceLogger.log_race_created(name, opened_by, info, goal.get('name'))
                 self.logger.info('race logged')
+                print(response)
                 self.state['race_id'] = response
             except Exception as e:
                 self.logger.error('Race logging created exception.', exc_info=True)
+                self.state['race_id'] = None
         
     ############################
     # COMMANDS
@@ -365,9 +375,10 @@ class RandoHandler(RaceHandler):
             await self.set_bot_raceinfo(seedData["url"] + "\n" + seedData["verification"])
             await self.send_seed_snark()
             await self.check_remove_bot_pin()
-
+            race_name = self.state.get('race_name')
+            print(self.state)
             try:
-                await FeInfoSeedLogger.log_rolled_seed(seedData)
+                await FeInfoSeedLogger.log_rolled_seed(seedData, self.state.get('race_id'), race_name)
             except Exception:
                 self.logger.error('Failed to log seed', exc_info=True)
 
