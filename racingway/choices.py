@@ -105,7 +105,8 @@ def get_greetings():
         'It seems to be working.',
         'Did you know that https://wiki.ff4fe.com/ has lots of great information?',
         'I\'ve been here the whole time!',
-        'The Moon blew up without warning and for no apparent reason.'
+        'The Moon blew up without warning and for no apparent reason.',
+        'I will proclaim the to the world the deeds of Gilgamesh.'
     )
 
 def get_post_roll_snark():
@@ -125,7 +126,8 @@ def get_post_roll_snark():
         'There\'s something lurking in the water. You better swim a little faster now',
         'It was a dumb thing to do but it wasn\'t that dumb',
         'You were so right when you said that I\'ve been drinking',
-        'so much depends upon a red lunarian'
+        'so much depends upon a red lunarian',
+        'I don\'t know what I expected.'
     )
 
 def get_pre_roll_snark():
@@ -149,6 +151,7 @@ def get_pre_roll_snark():
         'I agree, you were right to say we\'re doomed.',
         'There is an art to the building up of suspense.',
         'Fair is foul and foul is fair. Hover through the fog and filthy air.',
-        'Suppose time is a circle, bending back on itself.'
-        'The worm drives helically through the wood and does not know that the dust left in the bore once made the table integral and good; and suddenly the crystal hits the floor.'
+        'Suppose time is a circle, bending back on itself.',
+        'The worm drives helically through the wood and does not know that the dust left in the bore once made the table integral and good; and suddenly the crystal hits the floor.',
+        'This is the most important moment in our lives, and I want to pay attention, note every detail.'
     )
