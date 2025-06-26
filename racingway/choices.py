@@ -90,13 +90,22 @@ def get_hook():
 
 def get_greetings():
     return (
-        'Tip: Baron Inn is the best place for up to date news and extras',
+        'Tip: Baron Inn is the best place for up to date news and extras.',
         'Can I interest you in a hook route?',
         'Why do the seeds keep increasing?',
-        'Only the best players fade Antlion',
-        'I\'m here to repair the refund machine',
+        'Only the best players fade Antlion.',
+        'I\'m here to repair the refund machine.',
         'Would you like a good plate of brisky?',
-        'Eblan Castle: come for the treasure, stay for the monsters!'
+        'Eblan Castle: come for the treasure, stay for the monsters!',
+        'I\'m the error inside.',
+        'Have you heard the news that the world isn\'t ending?',
+        'But it was a beginning.',
+        'I was twelve, and the twins thirteen, the night the stars disappeared from the sky.',
+        'I\'ll make my report as if I told a story, for I was taught as a child on my homeworld that Truth is a matter of the imagination.',
+        'It seems to be working.',
+        'Did you know that https://wiki.ff4fe.com/ has lots of great information?',
+        'I\'ve been here the whole time!',
+        'The Moon blew up without warning and for no apparent reason.'
     )
 
 def get_post_roll_snark():
@@ -114,6 +123,9 @@ def get_post_roll_snark():
         'It was offered to me by name',
         'Don\'t blame me. Blame yourself, or God.',
         'There\'s something lurking in the water. You better swim a little faster now',
+        'It was a dumb thing to do but it wasn\'t that dumb',
+        'You were so right when you said that I\'ve been drinking',
+        'so much depends upon a red lunarian'
     )
 
 def get_pre_roll_snark():
@@ -135,4 +147,8 @@ def get_pre_roll_snark():
         'Maybe everything that falls down eventually rises.',
         'What we lose in the flame, we gain in the flood.',
         'I agree, you were right to say we\'re doomed.',
+        'There is an art to the building up of suspense.',
+        'Fair is foul and foul is fair. Hover through the fog and filthy air.',
+        'Suppose time is a circle, bending back on itself.'
+        'The worm drives helically through the wood and does not know that the dust left in the bore once made the table integral and good; and suddenly the crystal hits the floor.'
     )
