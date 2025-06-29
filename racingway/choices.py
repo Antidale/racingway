@@ -85,7 +85,12 @@ def get_hook():
         "Oh, I hate being disappointed, Smee. And I hate living in this flawed body. And I hate living in Neverland. And I hate... I hate... I *hate* Peter Pan!",
         "If you can't imagine yourself being Peter Pan, you won't *be* Peter Pan, so eat up.",
         "Hook routes are the worst.",
-        "I've just had an apostrophe."
+        "I've just had an apostrophe.",
+        "To die would be a grand adventure!",
+        "In three days, we're gonna have a war! A battle between good and evil to the death!",
+        "It doesn't matter what I say, so long as I sing with inflection",
+        "I ain't tellin' you no lie. The Hook brings you back, on that you can rely",
+        "I wanna burn all of your cities to the ground"
     )
 
 def get_greetings():
