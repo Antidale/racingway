@@ -106,7 +106,9 @@ def get_greetings():
         'Did you know that https://wiki.ff4fe.com/ has lots of great information?',
         'I\'ve been here the whole time!',
         'The Moon blew up without warning and for no apparent reason.',
-        'I will proclaim the to the world the deeds of Gilgamesh.'
+        'I will proclaim the to the world the deeds of Gilgamesh.',
+        'Stay awhile, and listen',
+        'Consider the magical sword'
     )
 
 def get_post_roll_snark():
@@ -127,7 +129,11 @@ def get_post_roll_snark():
         'It was a dumb thing to do but it wasn\'t that dumb',
         'You were so right when you said that I\'ve been drinking',
         'so much depends upon a red lunarian',
-        'I don\'t know what I expected.'
+        'I don\'t know what I expected.',
+        'How long will it last? How long \'til you learn?',
+        "And I'll jump, jump, jump until I reach the sun",
+        "You can't escape your fate",
+        "What's done cannot be undone."
     )
 
 def get_pre_roll_snark():
@@ -153,5 +159,9 @@ def get_pre_roll_snark():
         'Fair is foul and foul is fair. Hover through the fog and filthy air.',
         'Suppose time is a circle, bending back on itself.',
         'The worm drives helically through the wood and does not know that the dust left in the bore once made the table integral and good; and suddenly the crystal hits the floor.',
-        'This is the most important moment in our lives, and I want to pay attention, note every detail.'
+        'This is the most important moment in our lives, and I want to pay attention, note every detail.',
+        "Didn't know I had this many scars; I thought I'd won all my different battles.",
+        'Nothing will come of nothing.',
+        'Something wicked this way comes.',
+        'Fire burn, and cauldron bubble!'
     )
