@@ -320,6 +320,15 @@ class RandoHandler(RaceHandler):
     async def ex_hook(self, args, message):
         await self.send_message(random.choice(get_hook()))
 
+    async def ex_reminders(self, args, message):
+        await self.send_message("For the restream, please turn off stream alerts, disable Ads Manager, and make sure to not enable flash effects in the game.")
+        await self.send_message("Stream delay is not required for AFC races, and should not be used on restream.You should be streaming at or below a resolution of 720p and a bitrate of 2000 kbps.")
+
+    async def ex_r(self, args, message):
+        await self.ex_reminders(args, message)
+
+    async def ex_reminder(self, args, message):
+        await self.ex_reminders(args, message)
 
 
     ############################
