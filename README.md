@@ -34,5 +34,8 @@ Usable by a [race monitor](https://github.com/racetimeGG/racetime-app/wiki/Roles
 ## !unlock
 Usable by a [race monitor](https://github.com/racetimeGG/racetime-app/wiki/Roles-and-permissions#race-monitor). When used, removes lock on a race, allowing anyone to roll a seed. Re-rolling a seed is still restricted to a [category moderator](https://github.com/racetimeGG/racetime-app/wiki/Roles-and-permissions#category-moderator), even when a race is unlocked.
 
+## !reminders
+A command to help remind runners of stream expectations while their race is being restreamed. Can also be invoked by `!r` and `!reminder`.
+
 # Credits and thanks
 Racingway built with the [racetime-bot](https://github.com/racetimeGG/racetime-bot) and is initially patterned after [ootr-randobot](https://github.com/OoTRandomizer/rtgg-randobot). Seed generation code initially patterned after Yanguin8r's code for the same.
