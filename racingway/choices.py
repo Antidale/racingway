@@ -113,7 +113,8 @@ def get_greetings():
         'The Moon blew up without warning and for no apparent reason.',
         'I will proclaim the to the world the deeds of Gilgamesh.',
         'Stay awhile, and listen',
-        'Consider the magical sword'
+        'Consider the magical sword',
+        'I come in value packs of ten (in five varieties)'
     )
 
 def get_post_roll_snark():
@@ -138,7 +139,8 @@ def get_post_roll_snark():
         'How long will it last? How long \'til you learn?',
         "And I'll jump, jump, jump until I reach the sun",
         "You can't escape your fate",
-        "What's done cannot be undone."
+        "What's done cannot be undone.",
+        "I had a plan that was built on thinking too long"
     )
 
 def get_pre_roll_snark():
