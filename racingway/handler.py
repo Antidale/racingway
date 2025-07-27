@@ -151,6 +151,20 @@ class RandoHandler(RaceHandler):
         if 'locked' not in self.state:
             self.state['locked'] = False
 
+        # Restrict room creation to a single good call
+        if (self.state.get('race_id') is None):
+            opened_by = self.data['opened_by']
+            info = self.data.get('info_user')
+            goal = self.data.get('goal')
+            name = self.data.get('name')
+            try:
+                response = await RaceLogger.log_race_created(name, opened_by, info, goal.get('name'))
+                self.logger.info('race logged')
+                self.state['race_id'] = response
+            except Exception as e:
+                self.logger.error('Race logging created exception.', exc_info=True)
+                self.state['race_id'] = None
+
     async def end(self):
         if self.state.get('pinned_msg'):
             await self.unpin_message(self.state['pinned_msg'])
@@ -185,30 +199,11 @@ class RandoHandler(RaceHandler):
 
     async def race_data(self, data):
         await super().race_data(data)
-        await self.check_remove_bot_pin()
 
         if self.data.get('race_name') is None:
             race = data.get('race')
             name = race.get('name')
             self.state['race_name'] = name
-
-        # If bot opened the room, they should handle logging the race creation
-        if self.data.get('opened_by') is None:
-            return
-        
-        # Restrict room creation to a single good call
-        if (self.state.get('race_id') is None):
-            opened_by = race.get('opened_by')
-            info = race.get('info_user')
-            goal = race.get('goal')
-            try:
-                response = await RaceLogger.log_race_created(name, opened_by, info, goal.get('name'))
-                self.logger.info('race logged')
-                print(response)
-                self.state['race_id'] = response
-            except Exception as e:
-                self.logger.error('Race logging created exception.', exc_info=True)
-                self.state['race_id'] = None
         
     ############################
     # COMMANDS
