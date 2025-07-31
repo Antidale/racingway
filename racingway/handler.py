@@ -156,9 +156,9 @@ class RandoHandler(RaceHandler):
             opened_by = self.data['opened_by']
             info = self.data.get('info_user')
             goal = self.data.get('goal')
-            name = self.data.get('name')
+            slug = self.data.get('slug')
             try:
-                response = await RaceLogger.log_race_created(name, opened_by, info, goal.get('name'))
+                response = await RaceLogger.log_race_created(slug, opened_by, info, goal.get('name'))
                 self.logger.info('race logged')
                 self.state['race_id'] = response
             except Exception as e:
