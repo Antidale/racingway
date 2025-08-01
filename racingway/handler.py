@@ -115,7 +115,7 @@ class RandoHandler(RaceHandler):
                                     'main':'main',
                                     'galeswift':'galeswift',
                                     'alpha':'alpha'
-                                    # 'local':'local'
+                                    # , 'local':'local'
                                 }
                             ),
                             msg_actions.TextInput(
@@ -161,6 +161,7 @@ class RandoHandler(RaceHandler):
                 response = await RaceLogger.log_race_created(slug, opened_by, info, goal.get('name'))
                 self.logger.info('race logged')
                 self.state['race_id'] = response
+                self.state['slug'] = slug
             except Exception as e:
                 self.logger.error('Race logging created exception.', exc_info=True)
                 self.state['race_id'] = None
@@ -200,7 +201,7 @@ class RandoHandler(RaceHandler):
     async def race_data(self, data):
         await super().race_data(data)
 
-        if self.data.get('race_name') is None:
+        if self.data.get('slug') is None:
             race = data.get('race')
             name = race.get('name')
             self.state['race_name'] = name
@@ -379,7 +380,7 @@ class RandoHandler(RaceHandler):
             await self.set_bot_raceinfo(seedData["url"] + "\n" + seedData["verification"])
             await self.send_seed_snark()
             await self.check_remove_bot_pin()
-            race_name = self.state.get('race_name')
+            race_name = self.state.get('slug')
             print(self.state)
             try:
                 await FeInfoSeedLogger.log_rolled_seed(seedData, self.state.get('race_id'), race_name)
