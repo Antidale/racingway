@@ -4,6 +4,7 @@ def get_presets():
         'ACE': 'Adamant Cup Experience',
         'FBF': 'Firebomb Fiesta',
         'ZZA': 'Zemus Zone: Anthology',
+        'KE': 'Kokkol Express',
         'PPC': 'Plink Pony Club',
         'Kchar': 'Intro to Kchar',
         'HoldHero': 'Holding out for a Hero',
@@ -84,7 +85,7 @@ def get_preset_details(preset):
                 flags='Orandom:4,tough_quest,boss/req:3/win:crystal Kmain Pshop Crelaxed/j:abilities Twild Swild/free/no:apples Bstandard/whyburn Etoggle Glife/sylph -spoon',
                 host='main'
             )
-        case 'acgroup' |'acgroups' :
+        case 'acgroup' | 'acgroups' :
             return PresetDetails(
                 flags='Orandom:7,tough_quest/req:7/win:crystal Kmain/summon/moon Pkey Cstandard/nofree/restrict:cecil,fusoya/j:abilities/nekkie/party:4 Twildish/maxtier:7 Sstandard Bstandard/alt:gauntlet Etoggle Glife/sylph/backrow -kit:better -spoon',
                 host='main'
@@ -93,6 +94,11 @@ def get_preset_details(preset):
             return PresetDetails(
                 flags='O1:quest_magnes/2:quest_forge/3:boss_fabulgauntlet/4:boss_golbez/random:3,tough_quest/req:6/win:crystal Kmain/summon/moon/nofree Pkey Cstandard/nofree/restrict:cecil,fusoya/j:abilities/nekkie/hero Twildish/maxtier:5 Sstandard Bstandard/alt:gauntlet/whichburn Etoggle/cantrun Gwarp/life/sylph/backrow -kit:better -kit2:dwarf -spoon',
                 host='main'
+            )
+        case 'ke': 
+            return PresetDetails(
+                flags="O1:quest_murasamealtar/2:quest_forge/3:quest_tradepink/random:2,tough_quest/req:all/win:game Kmain/force:magma Pnone Crelaxed/noearned/distinct:7/start:not_fusoya/no:fusoya/j:abilities/nekkie Twildish/maxtier:7 Scabins/free Bstandard/alt:gauntlet/whichburn Etoggle/noexp Glife/sylph/backrow -kit:better -kit2:freedom -noadamants -spoon -smith:super,playable -vanilla:miabs",
+                host='galeswift'
             )
         case 'probotics':
             return PresetDetails(
