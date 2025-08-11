@@ -88,7 +88,7 @@ class RandoHandler(RaceHandler):
                 random.choice(get_greetings()),
                 actions=[
                     msg_actions.Action(
-                        label='AFC',
+                        label='Preset',
                         help_text='Roll Preset Flags',
                         message='!preset ${preset}',
                         submit='Roll Preset',
@@ -96,8 +96,8 @@ class RandoHandler(RaceHandler):
                             msg_actions.SelectInput(
                                 name="preset",
                                 label="choice",
-                                default="ACE",
-                                options=presets.get_afc_presets(),
+                                default="D2T",
+                                options=presets.get_presets(),
                             )
                         )
                     ),
@@ -123,20 +123,6 @@ class RandoHandler(RaceHandler):
                                 placeholder="enter your flagstring here",
                                 label="flags"
                             ),   
-                        )
-                    ),
-                    msg_actions.Action(
-                        label='Preset',
-                        help_text='Roll Preset Flags',
-                        message='!preset ${preset}',
-                        submit='Roll Preset',
-                        survey=msg_actions.Survey(
-                            msg_actions.SelectInput(
-                                name="preset",
-                                label="choice",
-                                default="D2T",
-                                options=presets.get_presets(),
-                            )
                         )
                     ),
                     msg_actions.ActionLink(
