@@ -14,7 +14,7 @@ except Exception:
     is_debug = False
 
 if (is_debug):
-    base_url = "https://localhost:5001/api/"
+    base_url = "http://localhost:8085/api/"
     header = { 'Api-Key': os.environ['FE_Info_Local_Key'] }
     
 
