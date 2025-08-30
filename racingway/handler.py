@@ -155,6 +155,8 @@ class RandoHandler(RaceHandler):
     async def end(self):
         if self.state.get('pinned_msg'):
             await self.unpin_message(self.state['pinned_msg'])
+        if self.state.get('volunteer_msg'):
+            await self.unpin_message(self.state['volunteer_msg'])
 
     async def chat_message(self, data):
         message = data.get('message', {})
