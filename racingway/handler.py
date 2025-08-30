@@ -306,6 +306,35 @@ class RandoHandler(RaceHandler):
         await self.send_message("For the restream, please turn off stream alerts, disable Ads Manager, and make sure to not enable flash effects in the game.")
         await self.send_message("Stream delay is not required for AFC races, and should not be used on restream.You should be streaming at or below a resolution of 720p and a bitrate of 2000 kbps.")
 
+    @monitor_cmd
+    async def ex_openvolunteers(self, args, message):
+        if self.state.get('restreamer'):
+            await self.send_message("someone already open volunteering")
+
+        await self.send_message("Looking for volunteers to be on restream click the button below or use !volunteer",
+                                actions=[
+                                    msg_actions.Action(
+                                        label="Volunteer",
+                                        help_text="Volunteer to be on the restream",
+                                        message="!volunteer"
+                                    )
+                                ],
+                                pinned=True)
+        self.state['restreamer'] = message.get('user').get('id')
+
+    async def ex_volunteer(self, args, message):
+        volunteer = message.get('user', {}).get('name')
+        # I don't think this should be possible, but handle the case
+        if volunteer is None:
+            return
+
+        restreamer = self.state.get('restreamer')
+        if restreamer is None:
+            return
+
+        message_text = volunteer + " volunteered for restream"
+        await self.send_message(message_text, direct_to=restreamer)
+
     async def ex_r(self, args, message):
         await self.ex_reminders(args, message)
 
