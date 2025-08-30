@@ -37,6 +37,15 @@ Usable by a [race monitor](https://github.com/racetimeGG/racetime-app/wiki/Roles
 ## !reminders
 A command to help remind runners of stream expectations while their race is being restreamed. Can also be invoked by `!r` and `!reminder`.
 
+## !openvolunteers
+A command to open a volunteering window for racers to be featured on a restream. This pins a message with a `Volunteer` button, and allows users to use the `!volunteer` command to send a message to the restreamer (e.g. the person who invoked this command). This command is limited to use by race_monitors. Can also be invoked by `!ov`.
+
+## !closevolunteers
+A command to close the volunteering window. Unpins the message and racingway will no longer send a DM to the person who used `!openvolunteers`. Leaves the race state in a manner where `!openvolunteers` cannot be used again to re-open volunteering. This command is limited to use by race_monitors, and may later be restricted to _just_ the person who used `!openvolunteers`. Can also be invoked by `!cv`
+
+## !volunteer
+A command to volunteer to be featured on a restream. Currently _does not_ require the user to have joined the race, but restriction may be added in the future. Users will probably just use the `Volunteer` button that is in the pinned message that results from `!openvolunteers`, but can use this directly.
+
 ## !hook
 Get Racingway's feelings about various Hook things.
 
