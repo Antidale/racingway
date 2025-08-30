@@ -9,18 +9,25 @@ The flags command can roll seeds from either the main site, or from galeswift's 
 ```
 
 ## !ff4flags
-In order to make a transition as easy as possible coming from people using DarkPaladin's dr-race-bot, Racingway has an `!ff4flags` command that will always use the main site to generate your flagstring. Below is an example of a Pro-B-Otics seed being rolled
+In order to make a transition as easy as possible coming from people using DarkPaladin's dr-race-bot (now known as prof-race-bot and maintained by Wyelm), Racingway has an `!ff4flags` command that will always use the main site to generate your flagstring. Below is an example of a Pro-B-Otics seed being rolled
 
 ```
 !ff4flags O1:quest_forge/2:quest_tradepink/3:quest_unlocksewer/random:2,tough_quest/req:4/win:crystal Kmain/summon/moon/unsafe Pkey Cstandard/nofree/distinct:7/no:tellah,fusoya/restrict:rydia,edward,yang,palom,porom/j:abilities/nekkie/nodupes/bye/hero Tpro Sstandard/no:j Bstandard/unsafe/alt:gauntlet/whyburn Etoggle/no:jdrops Glife/backrow -kit:freedom -kit2:notdeme -kit3:cid -noadamants -nocursed -spoon -pushbtojump
 ```
 
 ## !ff4galeswift
-In order to make a transition as easy as possible coming from people using DarkPaladin's dr-race-bot, Racingway has an `!ff4galeswift` command that will always use the main site to generate your flagstring. Below is an example of rolling a Doorway To Tomorrow seed being rolled
+In order to make a transition as easy as possible coming from people using DarkPaladin's dr-race-bot (now known as prof-race-bot and maintained by Wyelm), Racingway has an `!ff4galeswift` command that will always use the Galeswift's site to generate your flagstring. Below is an example of rolling a Doorway To Tomorrow seed being rolled
 
 ```
 !ff4galeswift 
 Omode:ki11/req:all/win:crystal Kmain/summon/moon/miab:above,below Pshop Cstandard/nofree/start:not_tellah/thrift:4/j:abilities/hero Tstandard Swildish/no:sirens Bstandard/alt:gauntlet/whichburn/whichbez Etoggle Glife/sylph/backrow -kit:basic -kit2:freedom -kit3:exit -noadamants -spoon -exp:nokeybonus,kicheckbonus5,maxlevelbonus -doorsrando:all
+```
+
+## !ff4alpha
+Continuing to make things as straightforward as possible for users of prof-race-bot, Racingway has teh `!ff4alpha` command that will always use the public alpha site to generate seeds. This command will be removed during periods where the alpha site is no longer public or active.  Below is an example of rolling a very long alpha seed with the command:
+
+```
+!ff4alpha Omode_dkmatter:quests OA1:boss_fabulgauntlet/2:boss_wyvern/3:boss_kainazzo/4:boss_valvalis/5:boss_golbez/do_1:dkmatter3/do_2:dkmatter3/do_3:abel/do_4:dkmatter4/do_all:dkmatter5 OB1:quest_cavebahamut/2:quest_murasamealtar/3:quest_crystalaltar/4:quest_whitealtar/5:quest_ribbonaltar/do_1:dkmatter5/do_2:dkmatter7/do_3:adamantarmor/do_4:dkmatter7/do_all:dkmatter10 OC1:quest_forge/2:quest_tradepink/3:quest_tradepan/4:char_edward/do_1:dkmatter3/do_2:dkmatter3/do_3:dkmatter4/do_all:dkmatter5 OD1:collect_dkmatter15/2:collect_dkmatter30/3:collect_dkmatter45/4:collect_dkmatter60/do_1:crystalring/do_2:powerrobe/do_3:spoon/do_all:crystal Kmain/miab:above/char/forge/latedark Pkey Cstandard/nofree/distinct:9/start:kain/restrict:cecil,edge,fusoya/j:abilities/nekkie Twildish/playable/mintier:3/miabs:pro Sstandard/playable/sell:quarter Bchaos/alt:gauntlet/chaosburn Etoggle Xobjbonus:5 Glife/sylph/backrow Qfastrom/msgspeedfix -kit:eblan -kit2:defense -kit3:cid -noadamants -nocursed -spoon
 ```
 
 ## !preset $preset_name
