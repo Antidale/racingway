@@ -163,7 +163,10 @@ class RandoHandler(RaceHandler):
             and message.get('bot').lower() == 'racingway'
             and message.get('is_pinned')
         ):
-            self.state['pinned_msg'] = message.get('id')
+            if(self.state.get('pinned_msg') is None):
+                self.state['pinned_msg'] = message.get('id')
+            else:
+                self.state['volunteer_msg'] = message.get('id')
 
         # pulled from racetime_bot/handler.py to avoid the automatic .lower() call on message data that'd be passed into commands
         if message.get('is_bot') or message.get('is_system'):
@@ -304,36 +307,80 @@ class RandoHandler(RaceHandler):
 
     async def ex_reminders(self, args, message):
         await self.send_message("For the restream, please turn off stream alerts, disable Ads Manager, and make sure to not enable flash effects in the game.")
-        await self.send_message("Stream delay is not required for AFC races, and should not be used on restream.You should be streaming at or below a resolution of 720p and a bitrate of 2000 kbps.")
+        await self.send_message("Stream delay is not required for races, and should not be used on restream. You should be streaming at or below a resolution of 720p and a bitrate of 2000 kbps.")
+
+    @monitor_cmd
+    async def ex_ov(self, args, message):
+        """
+        Shorthand version of !openvolunteers
+        """
+        await self.ex_openvolunteers(args, message)
 
     @monitor_cmd
     async def ex_openvolunteers(self, args, message):
+        """
+        Handles !openvolunteers and !ov commands. Sets the user who used it as the restreamer, and sends a pinned message in chat saying that volunteering is open, and has a button to help racers volunteer easily.
+        """
         if self.state.get('restreamer'):
-            await self.send_message("someone already open volunteering")
+            user = message.get('user').get('id')
+            await self.send_message("someone already opened volunteering", direct_to=user)
+            return
 
-        await self.send_message("Looking for volunteers to be on restream click the button below or use !volunteer",
+        await self.send_message("Want to be featured on restream? Use !volunteer or click the button below.",
                                 actions=[
                                     msg_actions.Action(
                                         label="Volunteer",
-                                        help_text="Volunteer to be on the restream",
+                                        help_text="Volunteer to be featured on restream",
                                         message="!volunteer"
                                     )
                                 ],
                                 pinned=True)
         self.state['restreamer'] = message.get('user').get('id')
 
+    @monitor_cmd
+    async def ex_cv(self, args, message):
+        """
+        Shorthand version of !closevolunteers
+        """
+        await self.ex_closevolunteers(args, message)
+
+    @monitor_cmd
+    async def ex_closevolunteers(self, args, message):
+        """
+        Handles !closevolunteers and !cv. Unpins the volunteering message and sets the state of the race to prevent re-opening volunteering, or forwarding of !volunteer messages to the restreamer.
+        """
+        if(self.state.get('volunteer_msg') == 'closed'):
+            return
+
+        try:
+            await self.unpin_message(self.state['volunteer_msg'])
+            self.state['volunteer_msg'] = 'closed'
+            await self.send_message("Restream volunteering has been closed")
+        except:
+            return
+
     async def ex_volunteer(self, args, message):
+        """
+        Hanlde !volunteer messages. If volunteering is not open, let the user know the current state of volunteering. otherwise send the 'restreamer' the info, and thank the user for volunteering.
+        """
+        if(self.state.get('volunteer_msg') == 'closed'):
+            await self.send_message("The volunteering window has closed, sorry!", direct_to=message.get('user').get('id'))
+            return
+
         volunteer = message.get('user', {}).get('name')
+        volunteer_id = message.get('user', {}).get('id')
         # I don't think this should be possible, but handle the case
         if volunteer is None:
             return
 
         restreamer = self.state.get('restreamer')
         if restreamer is None:
+            await self.send_message("Restream volunteering is not yet opened, please wait for the restreamer to open it", direct_to=volunteer_id)
             return
 
         message_text = volunteer + " volunteered for restream"
         await self.send_message(message_text, direct_to=restreamer)
+        await self.send_message("Thanks for volunteering!", direct_to=volunteer_id)
 
     async def ex_r(self, args, message):
         await self.ex_reminders(args, message)
