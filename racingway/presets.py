@@ -17,13 +17,8 @@ def get_presets():
         'AC_Group': 'Adamant Cup: Groups',
         'ZZ6': 'ZZ6',
         'Pro_B_Otics': 'Pro B Otics',
-    }
-
-def get_afc_presets():
-    return {
-        'ACE': 'Adamant Cup Experience',
-        'FBF': 'Firebomb Fiesta',
-        'ZZA': 'Zemus Zone: Anthology',
+        'VitaminB5': 'Vitamin B5',
+        'Push_B_for_Baron': 'Push B for Baron'
     }
 
 def get_preset_details(preset):
@@ -104,6 +99,16 @@ def get_preset_details(preset):
             return PresetDetails(
                 flags='O1:quest_forge/2:quest_tradepink/3:quest_unlocksewer/random:2,tough_quest/req:4/win:crystal Kmain/summon/moon/unsafe Pkey Cstandard/nofree/distinct:7/no:tellah,fusoya/restrict:rydia,edward,yang,palom,porom/j:abilities/nekkie/nodupes/bye/hero Tpro Sstandard/no:j Bstandard/unsafe/alt:gauntlet/whyburn Etoggle/no:jdrops Glife/backrow -kit:freedom -kit2:notdeme -kit3:cid -noadamants -nocursed -spoon -pushbtojump',
                 host='main'
+            )
+        case 'vitaminb5':
+            return PresetDetails(
+                flags='OA1:quest_forge/2:quest_tradepink/3:quest_unlocksewer/random:2,tough_quest/do_4:crystal Kmain/summon/moon/char/risky Pkey Cstandard/nofree/distinct:7/no:tellah,fusoya/restrict:rydia,edward,yang,palom,porom/j:abilities/nekkie/nodupes/bye/hero Tpro/playable Sstandard/playable/no:j Bstandard/risky/alt:gauntlet/whyburn Etoggle/no:jdrops Glife/backrow Qfastrom/msgspeedfix -kit:freedom -kit2:notdeme -kit3:cid -noadamants -nocursed -spoon -pushbtojump',
+                host='alpha'
+            )
+        case 'pushbforbaron':
+            return PresetDetails(
+                flags='OA1:boss_mirrorcecil/2:boss_valvalis/3:boss_golbez/4:boss_bahamut/do_1:defense/do_2:dragoonspear/do_3:avenger/do_4:abel OB1:char_cecil/2:char_rosa/3:char_cid/do_1:ribbon/do_2:crystalring/do_3:powerrobe OC1:quest_baroncastle/2:quest_ordeals/3:quest_zot/4:quest_bigwhale/5:quest_forge/do_1:auapple/do_2:auapple/do_3:auapple/do_4:moonveil/do_5:adamantarmor OD1:quest_sealedcave/group_a:1/group_b:2/group_c:3/do_all:game Kmain/summon/miab:above/char/forge/latedark/force:magma Pkey Cstandard/nofree/nogiant/risky/start:kain/only:cecil,kain,rosa,cid/j:abilities/nekkie/nodupes/party:3/bye/hero Twild/playable/maxtier:4/miabs:pro Scabins/free Bchaos/nofree/risky/alt:gauntlet/chaosburn Etoggle Xnokeybonus/objbonus:5 Glife/backrow Qfastrom/msgspeedfix -kit:better -kit2:dwarf -kit3:notdeme -noadamants -pushbtojump',
+                host='alpha'
             )
         case _:
             raise NotImplementedError("Preset option not implemented")
