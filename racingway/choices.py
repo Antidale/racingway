@@ -114,7 +114,8 @@ def get_greetings():
         'I will proclaim the to the world the deeds of Gilgamesh.',
         'Stay awhile, and listen',
         'Consider the magical sword',
-        'I come in value packs of ten (in five varieties)'
+        'I come in value packs of ten (in five varieties)',
+        'To be assassinated by a tribe of warrior grasshoppers, press three.'
     )
 
 def get_post_roll_snark():
@@ -170,5 +171,6 @@ def get_pre_roll_snark():
         "Didn't know I had this many scars; I thought I'd won all my different battles.",
         'Nothing will come of nothing.',
         'Something wicked this way comes.',
-        'Fire burn, and cauldron bubble!'
+        'Fire burn, and cauldron bubble!',
+        'I had absolutely no idea how to fight architectural poultry.'
     )
