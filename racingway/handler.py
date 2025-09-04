@@ -375,6 +375,10 @@ class RandoHandler(RaceHandler):
         if volunteer is None:
             return
 
+        if not self.can_volunteer(volunteer_id):
+            await self.send_message("You must join the race before you can volunteer.", direct_to=volunteer_id)
+            return
+
         restreamer = self.state.get('restreamer')
         if restreamer is None:
             await self.send_message("Restream volunteering is not yet opened, please wait for the restreamer to open it", direct_to=volunteer_id)
@@ -390,6 +394,23 @@ class RandoHandler(RaceHandler):
     async def ex_reminder(self, args, message):
         await self.ex_reminders(args, message)
 
+    def can_volunteer(self, volunteer_id):
+        try:
+            entrants = self.data.get("entrants")
+            if entrants is None:
+                return False
+
+            for racer in entrants:
+                racer_id = racer.get("user", {}).get("id", "")
+                racer_status = racer.get("status", {}).get("value", "")
+                if racer is None:
+                    return False
+                if racer_id == volunteer_id and racer_status in ["not_ready", "ready"]:
+                    return True
+            return False
+        except:
+            self.logger.error('Processing volunteering raised exeption.', exc_info=True)
+            return False
 
     ############################
     # Helper Methods
@@ -399,7 +420,7 @@ class RandoHandler(RaceHandler):
 
     def _race_in_progress(self):
         return self.data.get('status').get('value') in ('pending', 'in_progress')
-    
+
     def generate_seed_value(self):
         """
         Generates a 10 character alphanumeric string for the seed, sets it as state['seed_id'] and returns the value.
