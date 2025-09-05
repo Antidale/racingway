@@ -51,7 +51,7 @@ A command to open a volunteering window for racers to be featured on a restream.
 A command to close the volunteering window. Unpins the message and racingway will no longer send a DM to the person who used `!openvolunteers`. Leaves the race state in a manner where `!openvolunteers` cannot be used again to re-open volunteering. This command is limited to use by race_monitors, and may later be restricted to _just_ the person who used `!openvolunteers`. Can also be invoked by `!cv`
 
 ## !volunteer
-A command to volunteer to be featured on a restream. Currently _does not_ require the user to have joined the race, but restriction may be added in the future. Users will probably just use the `Volunteer` button that is in the pinned message that results from `!openvolunteers`, but can use this directly.
+A command to volunteer to be featured on a restream. In order to volunteer, you must currently have a **ready** or **not_ready** status, meaning have joined the race and neither quit nor been kicked. Users will probably just use the `Volunteer` button that is in the pinned message that results from `!openvolunteers`, but can use this directly.
 
 ## !hook
 Get Racingway's feelings about various Hook things.
