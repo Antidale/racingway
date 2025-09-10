@@ -328,7 +328,7 @@ class RandoHandler(RaceHandler):
             await self.send_message("someone already opened volunteering", direct_to=user)
             return
 
-        await self.send_message("Want to be featured on restream? Use !volunteer or click the button below.",
+        await self.send_message("Want to be featured on restream? Use !volunteer or click the button below. @here",
                                 actions=[
                                     msg_actions.Action(
                                         label="Volunteer",
