@@ -7,6 +7,7 @@ def get_presets():
         'KE': 'Kokkol Express',
         'PPC': 'Plink Pony Club',
         'Kchar': 'Intro to Kchar',
+        'Standard5': 'Sample Standard 5.0',
         'HoldHero': 'Holding out for a Hero',
         'DM5': 'Dark Matter, 5.0',
         'YSN': 'You Spoony Ninja',
@@ -108,6 +109,10 @@ def get_preset_details(preset):
         case 'pushbforbaron':
             return PresetDetails(
                 flags='OA1:boss_mirrorcecil/2:boss_valvalis/3:boss_golbez/4:boss_bahamut/do_1:defense/do_2:dragoonspear/do_3:avenger/do_4:abel OB1:char_cecil/2:char_rosa/3:char_cid/do_1:ribbon/do_2:crystalring/do_3:powerrobe OC1:quest_baroncastle/2:quest_ordeals/3:quest_zot/4:quest_bigwhale/5:quest_forge/do_1:auapple/do_2:auapple/do_3:auapple/do_4:moonveil/do_5:adamantarmor OD1:quest_sealedcave/group_a:1/group_b:2/group_c:3/do_all:game Kmain/summon/miab:above/char/forge/latedark/force:magma Pkey Cstandard/nofree/nogiant/risky/start:kain/only:cecil,kain,rosa,cid/j:abilities/nekkie/nodupes/party:3/bye/hero Twild/playable/maxtier:4/miabs:pro Scabins/free Bchaos/nofree/risky/alt:gauntlet/chaosburn Etoggle Xnokeybonus/objbonus:5 Glife/backrow Qfastrom/msgspeedfix -kit:better -kit2:dwarf -kit3:notdeme -noadamants -pushbtojump',
+                host='alpha'
+            )
+        case 'standard5': PresetDetails(
+                flags='OArandom:5,tough_quest OB1:quest_forge/group_a:4/do_all:crystal Kmain/summon/moon/char/nofree/latedark Pkey Cstandard/nofree/nogiant/distinct:9/start:any/partner:char/no:fusoya/j:abilities/nekkie Twildish/maxtier:7/miabs:pro Sstandard Bmaybe/alt:gauntlet/chaosburn/whichbez Etoggle Xnokeybonus/objbonus:20/kicheckbonus:3/maxmulti:400/bonuses:mul Gwarp/life/sylph/backrow Qfastrom/msgspeedfix -kit:basic -kit2:better -noadamants -spoon -smith:super,playable',
                 host='alpha'
             )
         case _:
