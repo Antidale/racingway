@@ -337,6 +337,7 @@ class RandoHandler(RaceHandler):
                                     )
                                 ],
                                 pinned=True)
+        await self.send_message("Want to be featured on restream? !volunteer or click the Volunteer button in the pinned message.")
         self.state['restreamer'] = message.get('user').get('id')
 
     @monitor_cmd
