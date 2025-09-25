@@ -115,7 +115,8 @@ def get_greetings():
         'Stay awhile, and listen',
         'Consider the magical sword',
         'I come in value packs of ten (in five varieties)',
-        'To be assassinated by a tribe of warrior grasshoppers, press three.'
+        'To be assassinated by a tribe of warrior grasshoppers, press three.',
+        'Death to Chronos'
     )
 
 def get_post_roll_snark():
@@ -172,5 +173,6 @@ def get_pre_roll_snark():
         'Nothing will come of nothing.',
         'Something wicked this way comes.',
         'Fire burn, and cauldron bubble!',
-        'I had absolutely no idea how to fight architectural poultry.'
+        'I had absolutely no idea how to fight architectural poultry.',
+        'So mote it be'
     )
