@@ -134,7 +134,7 @@ def get_preset_details(preset):
             )
         case '100cc':
             return PresetDetails(
-                flags='OA1:quest_monsterqueen/2:quest_monsterking OB1:quest_traderat/2:quest_tradepink OC1:quest_forge/group_a:1/group_b:1 OD1:collect_ki12/2:quest_magma/3:quest_pass/group_c:all/do_all:crystal OE1:collect_boss22/2:quest_giant/group_c:all/do_all:game Kmain/summon/miab:below/nofree/latedark/force:hook/unweighted/start:zonk Pchests Crelaxed/nofree/nogiant/j:abilities/nekkie/nodupes/bye Tpro Sstandard/no:apples Bmaybe/nofree/no:waterhag,fabulgauntlet,mirrorcecil,karate,kingqueen/chaosburn Etoggle Xobjbonus:12/kicheckbonus:5/maxmulti:300 Gwarp/life/sylph/backrow Qmsgspeedfix -kit:better -kit2:archer -kit3:exit -noadamants -nocursed -spoon -smith:super',
+                flags='OA1:quest_monsterqueen/2:quest_monsterking OB1:quest_traderat/2:quest_tradepink OC1:quest_forge/group_a:1/group_b:1 OD1:collect_ki12/2:quest_magma/3:quest_pass/group_c:all/do_all:crystal OE1:collect_boss22/2:quest_giant/group_c:all/do_all:game Kmain/summon/miab:below/nofree/latedark/force:hook/unweighted/start:legend Pchests Crelaxed/nofree/nogiant/j:abilities/nekkie/nodupes/bye Tpro Sstandard/no:apples Bmaybe/nofree/no:waterhag,fabulgauntlet,mirrorcecil,karate,kingqueen/chaosburn Etoggle Xobjbonus:12/kicheckbonus:5/maxmulti:300 Gwarp/life/sylph/backrow Qmsgspeedfix -kit:better -kit2:archer -kit3:exit -noadamants -nocursed -spoon -smith:super',
                 host='alpha'
             )
         case '150cc':
