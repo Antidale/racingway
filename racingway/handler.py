@@ -88,6 +88,20 @@ class RandoHandler(RaceHandler):
                 random.choice(get_greetings()),
                 actions=[
                     msg_actions.Action(
+                        label='CC Sets',
+                        help_text='Roll CC Flags',
+                        message='!preset ${preset}',
+                        submit='Roll Preset',
+                        survey=msg_actions.Survey(
+                            msg_actions.SelectInput(
+                                name="preset",
+                                label="choice",
+                                default="50cc",
+                                options=presets.get_cc_presets(),
+                            )
+                        )
+                    ),
+                    msg_actions.Action(
                         label='Preset',
                         help_text='Roll Preset Flags',
                         message='!preset ${preset}',
@@ -96,7 +110,7 @@ class RandoHandler(RaceHandler):
                             msg_actions.SelectInput(
                                 name="preset",
                                 label="choice",
-                                default="D2T",
+                                default="50cc",
                                 options=presets.get_presets(),
                             )
                         )
