@@ -11,6 +11,7 @@ from racetime_bot import RaceHandler, monitor_cmd, can_moderate, can_monitor, ms
 from .log_seed import FeInfoSeedLogger
 from .log_race import RaceLogger
 from .choices import *
+from .monitors import *
 
 ALPHABET = string.ascii_uppercase + string.digits
 
@@ -324,6 +325,23 @@ class RandoHandler(RaceHandler):
     async def ex_reminders(self, args, message):
         await self.send_message("For the restream, please turn off stream alerts, disable Ads Manager, and make sure to not enable flash effects in the game.")
         await self.send_message("Stream delay is not required for races, and should not be used on restream. You should be streaming at or below a resolution of 720p and a bitrate of 2000 kbps.")
+
+    async def ex_monitor(self, args, message):
+        user_name =  message.get('user', {}).get('full_name', 'no')
+        user_id = message.get('user', {}).get('id')
+
+        if(can_monitor(message)):
+            await self.send_message("You're already a monitor", direct_to=user_id)
+            return
+        
+        if(not self.can_volunteer(user_id)):
+            await self.send_message("You must join the race first", direct_to=user_id)
+            return
+
+        if(check_promotability(userName=user_name)):
+            await self.add_monitor(user_id)
+        else:
+            await self.send_message("You are not on the approved monitors list", direct_to=user_id)
 
     @monitor_cmd
     async def ex_ov(self, args, message):
