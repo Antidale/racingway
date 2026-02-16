@@ -1,9 +1,9 @@
 
 def get_presets():
     return {
-        '50ccb': '50cc (2026.02.15)',
-        '100ccb': '100cc (2026.02.15)',
-        '150ccb': '150cc (2026.02.15)',
+        '50ccb': '50cc (2026-02-15)',
+        '100ccb': '100cc (2026-02-15)',
+        '150ccb': '150cc (2026-02-15)',
         '50cc': '50cc (initial)',
         '100cc': '100cc (initial)',
         '150cc': '150cc (initial)',
@@ -31,9 +31,9 @@ def get_presets():
 
 def get_cc_presets():
     return {
-        '50ccb': '50cc (2026.02.15)',
-        '100ccb': '100cc (2026.02.15)',
-        '150ccb': '150cc (2026.02.15)',
+        '50ccb': '50cc (2026-02-15)',
+        '100ccb': '100cc (2026-02-15)',
+        '150ccb': '150cc (2026-02-15)',
         '50cc': '50cc (initial)',
         '100cc': '100cc (initial)',
         '150cc': '150cc (initial)',
