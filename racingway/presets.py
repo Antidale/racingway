@@ -1,12 +1,12 @@
 
 def get_presets():
     return {
-        '50cc': '50cc B',
-        '100cc': '100cc B',
-        '150cc': '150cc B',
-        '50cc': '50cc',
-        '100cc': '100cc',
-        '150cc': '150cc',
+        '50ccb': '50cc (2026.02.15)',
+        '100ccb': '100cc (2026.02.15)',
+        '150ccb': '150cc (2026.02.15)',
+        '50cc': '50cc (initial)',
+        '100cc': '100cc (initial)',
+        '150cc': '150cc (initial)',
         'ACE': 'Adamant Cup Experience',
         'FBF': 'Firebomb Fiesta',
         'ZZA': 'Zemus Zone: Anthology',
@@ -31,12 +31,12 @@ def get_presets():
 
 def get_cc_presets():
     return {
-        '50cc': '50cc B',
-        '100cc': '100cc B',
-        '150cc': '150cc B',
-        '50cc': '50cc',
-        '100cc': '100cc',
-        '150cc': '150cc'
+        '50ccb': '50cc (2026.02.15)',
+        '100ccb': '100cc (2026.02.15)',
+        '150ccb': '150cc (2026.02.15)',
+        '50cc': '50cc (initial)',
+        '100cc': '100cc (initial)',
+        '150cc': '150cc (initial)',
     }
 
 def get_preset_details(preset):
