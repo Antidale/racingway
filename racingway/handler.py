@@ -89,16 +89,16 @@ class RandoHandler(RaceHandler):
                 random.choice(get_greetings()),
                 actions=[
                     msg_actions.Action(
-                        label='CC Sets',
-                        help_text='Roll CC Flags',
+                        label='EEGP',
+                        help_text='Roll EEGP Flags',
                         message='!preset ${preset}',
                         submit='Roll Preset',
                         survey=msg_actions.Survey(
                             msg_actions.SelectInput(
                                 name="preset",
                                 label="choice",
-                                default="50cc",
-                                options=presets.get_cc_presets(),
+                                default="mr",
+                                options=presets.get_eegp_presets(),
                             )
                         )
                     ),

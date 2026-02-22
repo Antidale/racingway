@@ -29,7 +29,7 @@ def get_presets():
 
     }
 
-def get_cc_presets():
+def get_eegp_presets():
     return {
         'mr': 'Megaflare Rally',
         'to': 'Tsunami Open',
