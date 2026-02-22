@@ -1,12 +1,12 @@
 
 def get_presets():
     return {
-        '50ccb': '50cc (2026-02-15)',
-        '100ccb': '100cc (2026-02-15)',
-        '150ccb': '150cc (2026-02-15)',
-        '50cc': '50cc (initial)',
-        '100cc': '100cc (initial)',
-        '150cc': '150cc (initial)',
+        'mr': 'Megaflare Rally',
+        'to': 'Tsunami Open',
+        'zc': 'Zantetsuken Circuit',
+        'mrw': 'Megaflare Rally (Whale)',
+        'tow': 'Tsunami Open (Whale)',
+        'zcw': 'Zantetsuken Circuit (Whale)',
         'ACE': 'Adamant Cup Experience',
         'FBF': 'Firebomb Fiesta',
         'ZZA': 'Zemus Zone: Anthology',
@@ -31,12 +31,12 @@ def get_presets():
 
 def get_cc_presets():
     return {
-        '50ccb': '50cc (2026-02-15)',
-        '100ccb': '100cc (2026-02-15)',
-        '150ccb': '150cc (2026-02-15)',
-        '50cc': '50cc (initial)',
-        '100cc': '100cc (initial)',
-        '150cc': '150cc (initial)',
+        'mr': 'Megaflare Rally',
+        'to': 'Tsunami Open',
+        'zc': 'Zantetsuken Circuit',
+        'mrw': 'Megaflare Rally (Whale)',
+        'tow': 'Tsunami Open (Whale)',
+        'zcw': 'Zantetsuken Circuit (Whale)'
     }
 
 def get_preset_details(preset):
@@ -133,34 +133,34 @@ def get_preset_details(preset):
                 flags='OArandom:5,tough_quest OB1:quest_forge/group_a:4/do_all:crystal Kmain/summon/moon/char/nofree/latedark Pkey Cstandard/nofree/nogiant/distinct:9/start:any/partner:char/no:fusoya/j:abilities/nekkie Twildish/maxtier:7/miabs:pro Sstandard Bmaybe/alt:gauntlet/chaosburn/whichbez Etoggle Xnokeybonus/objbonus:20/kicheckbonus:3/maxmulti:400/bonuses:mul Gwarp/life/sylph/backrow Qfastrom/msgspeedfix -kit:basic -kit2:better -noadamants -spoon -smith:super,playable',
                 host='alpha'
             )
-        case '50cc':
+        case 'mr':
             return PresetDetails(
-                flags='OA1:quest_cavebahamut/2:quest_traderat/3:quest_ribbonaltar/4:quest_masamunealtar OBrandom:5,tough_quest OCgroup_a:all/group_b:3/do_1:superweapon/do_all:crystal OD1:boss_bahamut/2:boss_wyvern/random:6,boss OE1:collect_gp100/2:collect_gp250/3:collect_gp500/do_1:spoon/do_2:cursedring/do_3:adamantarmor Kmain/moon/miab:above/nofree/force:magma/start:darkness Pkey Crelaxed/nofree/nogiant/start:cecil,kain,rydia,edward,rosa,yang,palom,porom,cid,edge,fusoya/partner:any/no:cecil,fusoya/j:abilities/nekkie/nodupes/party:3/bye/permajoin/hero Twildish/playable/maxtier:5/unrestrict:moon/miabs:pro Spro/playable/no:apples,sirens Bstandard/alt:gauntlet/whichburn Etoggle/no:sirens Xobjbonus:10/kicheckbonus:2/zonkbonus:2/maxmulti:400/bonuses:mul Gwarp/life/sylph/backrow Qmsgspeedfix -kit:better -kit2:exit -kit3:miab -noadamants -nocursed -spoon -smith:alt -vanilla:miabs',
+                flags='OA1:quest_traderat/random:5,tough_quest OB1:quest_cavebahamut/2:quest_ribbonaltar/3:quest_masamunealtar OCgroup_a:4/group_b:all/do_1:superweapon/do_all:crystal OD1:boss_bahamut/2:boss_wyvern/random:6,boss OE1:collect_gp100/2:collect_gp250/3:collect_gp500/do_1:spoon/do_2:cursedring/do_3:adamantarmor Kmain/moon/miab:above/nofree/force:magma/start:darkness Pkey Crelaxed/nofree/nogiant/start:cecil,kain,rydia,edward,rosa,yang,palom,porom,cid,edge,fusoya/partner:any/no:cecil,tellah,fusoya/j:abilities/nekkie/nodupes/party:3/bye/permajoin/hero Twildish/playable/maxtier:5/unrestrict:moon/miabs:pro Spro/playable/no:apples Bstandard/alt:gauntlet/whichburn Etoggle/no:sirens Xobjbonus:10/kicheckbonus:2/zonkbonus:2/maxmulti:400/bonuses:mul Glife/sylph/backrow Qmsgspeedfix -kit:better -kit2:exit -kit3:miab -noadamants -nocursed -spoon -smith:alt -vanilla:miabs',
                 host='alpha'
             )
-        case '100cc':
-            return PresetDetails(
-                flags='OA1:quest_monsterqueen/2:quest_monsterking OB1:quest_traderat/2:quest_tradepink OC1:quest_forge/group_a:1/group_b:1 OD1:collect_ki12/2:quest_magma/3:quest_pass/group_c:all/do_all:crystal OE1:collect_boss20/2:quest_giant/group_c:all/do_all:game Kmain/summon/miab:below/nofree/latedark/force:hook/unweighted/start:legend Pchests Crelaxed/nofree/nogiant/j:abilities/nekkie/nodupes/bye Tpro Sstandard/no:apples Bmaybe/nofree/no:waterhag,fabulgauntlet,mirrorcecil,karate,kingqueen/chaosburn Etoggle Xobjbonus:12/kicheckbonus:5/maxmulti:300 Gwarp/life/sylph/backrow Qmsgspeedfix -kit:better -kit2:archer -kit3:exit -noadamants -nocursed -spoon -smith:super',
-                host='alpha'
-            )
-        case '150cc':
-            return PresetDetails(
-                flags='OA1:boss_odin/2:boss_golbez/random:3,boss/do_1:dkmatter3/do_2:dkmatter3/do_3:dkmatter3/do_4:dkmatter3/do_5:dkmatter3 OB1:quest_forge/2:quest_tradepink/3:quest_baronbasement/random:2,tough_quest/do_1:dkmatter5/do_2:dkmatter5/do_3:dkmatter5/do_4:dkmatter5/do_5:dkmatter5 OC1:quest_falcon/2:quest_murasamealtar/random:2,tough_quest/do_1:dkmatter7/do_2:dkmatter7/do_3:dkmatter7/do_4:dkmatter7 OD1:quest_giant/do_1:dkmatter10 OE1:collect_dkmatter20/2:collect_dkmatter50/do_1:superweapon/do_all:game Kmain/miab:above/char/force:magma/start:earthcrystal Pnone Cstandard/distinct:8/start:any/partner:kicheck/no:fusoya/j:abilities/nekkie/wishes Twildish/playable/maxtier:7/miabs:pro Scabins/free Bchaos/no:fabulgauntlet/chaosburn/whichbez Etoggle/noexp Xnokeybonus/objbonus:10 Glife/backrow Qmsgspeedfix -kit:better -kit2:freedom -kit3:exit -noadamants -spoon -smith:alt,playable -vanilla:miabs',
-                host='alpha'
-            )
-        case '50ccb':
-            return PresetDetails(
-                flags='OArandom:5,tough_quest OB1:quest_cavebahamut/2:quest_traderat/3:quest_ribbonaltar/4:quest_masamunealtar OCgroup_a:3/group_b:all/do_1:superweapon/do_all:crystal OD1:boss_bahamut/2:boss_wyvern/random:6,boss OE1:collect_gp100/2:collect_gp250/3:collect_gp750/do_1:spoon/do_2:cursedring/do_3:adamantarmor Kmain/moon/miab:above/nofree/force:magma/start:darkness Pkey Crelaxed/nofree/nogiant/start:cecil,kain,rydia,edward,rosa,yang,palom,porom,cid,edge,fusoya/partner:any/no:cecil,fusoya/j:abilities/nekkie/nodupes/party:3/bye/permajoin/hero Twildish/playable/maxtier:5/unrestrict:moon/miabs:pro Spro/playable/no:apples Bstandard/alt:gauntlet/whichburn Etoggle/no:sirens Xobjbonus:10/kicheckbonus:2/zonkbonus:2/maxmulti:400/bonuses:mul Gwarp/life/sylph/backrow Qmsgspeedfix -kit:better -kit2:exit -kit3:miab -noadamants -nocursed -spoon -smith:alt -vanilla:miabs',
-                host='alpha'
-            )
-        case '100ccb':
+        case 'to':
             return PresetDetails(
                 flags='OA1:quest_monsterqueen/2:quest_monsterking OB1:quest_traderat/2:quest_tradepink OC1:quest_forge/group_a:1/group_b:1 OD1:collect_ki12/2:quest_magma/3:quest_pass/group_c:all/do_all:crystal OE1:collect_boss20/2:quest_giant/group_c:all/do_all:game Kmain/summon/miab:below/nofree/latedark/force:hook/unweighted/start:legend Pchests Crelaxed/nofree/nogiant/j:abilities/nekkie/nodupes/bye Tpro Sstandard/no:apples Bmaybe/nofree/no:waterhag,fabulgauntlet,mirrorcecil,karate,kingqueen/chaosburn Etoggle Xobjbonus:12/kicheckbonus:5/maxmulti:300 Gwarp/life/sylph/backrow Qmsgspeedfix -kit:better -kit2:archer -kit3:exit -noadamants -spoon -smith:super',
                 host='alpha'
             )
-        case '150ccb':
+        case 'zc':
             return PresetDetails(
                 flags='OA1:boss_odin/2:boss_golbez/random:3,boss/do_1:dkmatter3/do_2:dkmatter3/do_3:dkmatter3/do_4:dkmatter3/do_5:dkmatter3 OB1:quest_forge/2:quest_tradepink/3:quest_baronbasement/random:2,tough_quest/do_1:dkmatter5/do_2:dkmatter5/do_3:dkmatter5/do_4:dkmatter5/do_5:dkmatter5 OC1:quest_falcon/2:quest_murasamealtar/random:2,tough_quest/do_1:dkmatter7/do_2:dkmatter7/do_3:dkmatter7/do_4:dkmatter7 OD1:quest_giant/do_1:dkmatter10 OE1:collect_dkmatter20/2:collect_dkmatter50/do_1:superweapon/do_all:game Kmain/char/force:magma/start:earthcrystal Pnone Cstandard/distinct:8/start:any/partner:kicheck/no:fusoya/j:abilities/nekkie/wishes Twildish/playable/maxtier:7/miabs:pro Scabins/free Bchaos/no:fabulgauntlet/chaosburn/whichbez Etoggle/noexp Xnokeybonus/objbonus:10/zonkbonus:5 Glife/sylph/backrow Qmsgspeedfix -kit:better -kit2:freedom -kit3:exit -noadamants -spoon -smith:alt,playable -vanilla:miabs',
+                host='alpha'
+            )
+        case 'mrw':
+            return PresetDetails(
+                flags='OA1:quest_traderat/random:5,tough_quest OB1:quest_cavebahamut/2:quest_ribbonaltar/3:quest_masamunealtar OCgroup_a:4/group_b:all/do_1:superweapon/do_all:crystal OD1:boss_bahamut/2:boss_wyvern/random:6,boss OE1:collect_gp100/2:collect_gp250/3:collect_gp500/do_1:spoon/do_2:cursedring/do_3:adamantarmor Kmain/moon/miab:above/nofree/force:magma/start:darkness Pkey Crelaxed/nofree/nogiant/start:cecil,kain,rydia,edward,rosa,yang,palom,porom,cid,edge,fusoya/partner:any/no:cecil,tellah,fusoya/j:abilities/nekkie/nodupes/party:3/bye/permajoin/hero Twildish/playable/maxtier:5/unrestrict:moon/miabs:pro Spro/playable/no:apples Bstandard/alt:gauntlet/whichburn Etoggle/no:sirens Xobjbonus:10/kicheckbonus:2/zonkbonus:2/maxmulti:400/bonuses:mul Glife/sylph/backrow Qfastrom/msgspeedfix -kit:better -kit2:exit -kit3:miab -noadamants -nocursed -spoon -smith:alt -vanilla:miabs',
+                host='alpha'
+            )
+        case 'tow':
+            return PresetDetails(
+                flags='OA1:quest_monsterqueen/2:quest_monsterking OB1:quest_traderat/2:quest_tradepink OC1:quest_forge/group_a:1/group_b:1 OD1:collect_ki12/2:quest_magma/3:quest_pass/group_c:all/do_all:crystal OE1:collect_boss20/2:quest_giant/group_c:all/do_all:game Kmain/summon/miab:below/nofree/latedark/force:hook/unweighted/start:legend Pchests Crelaxed/nofree/nogiant/j:abilities/nekkie/nodupes/bye Tpro Sstandard/no:apples Bmaybe/nofree/no:waterhag,fabulgauntlet,mirrorcecil,karate,kingqueen/chaosburn Etoggle Xobjbonus:12/kicheckbonus:5/maxmulti:300 Gwarp/life/sylph/backrow Qfastrom/msgspeedfix -kit:better -kit2:archer -kit3:exit -noadamants -spoon -smith:super',
+                host='alpha'
+            )
+        case 'zcw':
+            return PresetDetails(
+                flags='OA1:boss_odin/2:boss_golbez/random:3,boss/do_1:dkmatter3/do_2:dkmatter3/do_3:dkmatter3/do_4:dkmatter3/do_5:dkmatter3 OB1:quest_forge/2:quest_tradepink/3:quest_baronbasement/random:2,tough_quest/do_1:dkmatter5/do_2:dkmatter5/do_3:dkmatter5/do_4:dkmatter5/do_5:dkmatter5 OC1:quest_falcon/2:quest_murasamealtar/random:2,tough_quest/do_1:dkmatter7/do_2:dkmatter7/do_3:dkmatter7/do_4:dkmatter7 OD1:quest_giant/do_1:dkmatter10 OE1:collect_dkmatter20/2:collect_dkmatter50/do_1:superweapon/do_all:game Kmain/char/force:magma/start:earthcrystal Pnone Cstandard/distinct:8/start:any/partner:kicheck/no:fusoya/j:abilities/nekkie/wishes Twildish/playable/maxtier:7/miabs:pro Scabins/free Bchaos/no:fabulgauntlet/chaosburn/whichbez Etoggle/noexp Xnokeybonus/objbonus:10/zonkbonus:5 Glife/sylph/backrow Qfastrom/msgspeedfix -kit:better -kit2:freedom -kit3:exit -noadamants -spoon -smith:alt,playable -vanilla:miabs',
                 host='alpha'
             )
         case _:
