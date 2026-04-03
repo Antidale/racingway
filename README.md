@@ -59,5 +59,8 @@ Get Racingway's feelings about various Hook things.
 ## !eatcookie
 Mmm, cookie.
 
+## !promote
+If the user's racetime full name (e.g. their display name plus the discriminator, so `SomeName#1234`) is listed in the [monitors.py](./racingway/monitors.py) file, they can use the `!promote` command to have racingway promote them to Race Monitor status for that race in racetime. This is mostly useful to allow restreamers who did not open the room directly on racetime.gg to use the `!openvolunteers` and `!closevolunteers` commands, and also allows them to re-roll a seed.
+
 # Credits and thanks
 Racingway built with the [racetime-bot](https://github.com/racetimeGG/racetime-bot) and is initially patterned after [ootr-randobot](https://github.com/OoTRandomizer/rtgg-randobot). Seed generation code initially patterned after Yanguin8r's code for the same.
