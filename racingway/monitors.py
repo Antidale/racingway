@@ -1,5 +1,6 @@
 MONITOR_LIST = [
-    "FirebirdLover#1716"
+    "FirebirdLover#1716",
+    "Alchemie#6158"
 ]
 
 def check_promotability(userName):
