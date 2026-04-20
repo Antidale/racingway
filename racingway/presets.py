@@ -31,12 +31,12 @@ def get_presets():
 
 def get_eegp_presets():
     return {
+        'mrw': 'Megaflare Rally (Whale Cup)',
+        'tow': 'Tsunami Open (Whale Cup)',
+        'zcw': 'Zantetsuken Circuit (Whale Cup)',
         'mr': 'Megaflare Rally',
         'to': 'Tsunami Open',
-        'zc': 'Zantetsuken Circuit',
-        'mrw': 'Megaflare Rally (Whale)',
-        'tow': 'Tsunami Open (Whale)',
-        'zcw': 'Zantetsuken Circuit (Whale)'
+        'zc': 'Zantetsuken Circuit'
     }
 
 def get_preset_details(preset):

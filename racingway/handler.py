@@ -97,7 +97,7 @@ class RandoHandler(RaceHandler):
                             msg_actions.SelectInput(
                                 name="preset",
                                 label="choice",
-                                default="mr",
+                                default="mrw",
                                 options=presets.get_eegp_presets(),
                             )
                         )
