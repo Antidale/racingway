@@ -1,12 +1,13 @@
 
 def get_presets():
     return {
+        'pc': 'Paladin Cup',
         'mr': 'Megaflare Rally',
         'to': 'Tsunami Open',
         'zc': 'Zantetsuken Circuit',
-        'mrw': 'Megaflare Rally (Whale)',
-        'tow': 'Tsunami Open (Whale)',
-        'zcw': 'Zantetsuken Circuit (Whale)',
+        'mrw': 'Megaflare Rally (Whale Cup)',
+        'tow': 'Tsunami Open (Whale Cup)',
+        'zcw': 'Zantetsuken Circuit (Whale Cup)',
         'ACE': 'Adamant Cup Experience',
         'FBF': 'Firebomb Fiesta',
         'ZZA': 'Zemus Zone: Anthology',
@@ -26,7 +27,6 @@ def get_presets():
         'Pro_B_Otics': 'Pro B Otics',
         'VitaminB5': 'Vitamin B5',
         'Push_B_for_Baron': 'Push B for Baron'
-
     }
 
 def get_eegp_presets():
@@ -162,7 +162,12 @@ def get_preset_details(preset):
             return PresetDetails(
                 flags='OA1:boss_odin/2:boss_golbez/random:3,boss/do_1:dkmatter3/do_2:dkmatter3/do_3:dkmatter3/do_4:dkmatter3/do_5:dkmatter3 OB1:quest_forge/2:quest_tradepink/3:quest_baronbasement/random:2,tough_quest/do_1:dkmatter5/do_2:dkmatter5/do_3:dkmatter5/do_4:dkmatter5/do_5:dkmatter5 OC1:quest_falcon/2:quest_murasamealtar/random:2,tough_quest/do_1:dkmatter7/do_2:dkmatter7/do_3:dkmatter7/do_4:dkmatter7 OD1:quest_giant/do_1:dkmatter10 OE1:collect_dkmatter20/2:collect_dkmatter50/do_1:superweapon/do_all:game Kmain/char/force:magma/start:earthcrystal Pnone Cstandard/distinct:8/start:any/partner:kicheck/no:fusoya/j:abilities/nekkie/wishes Twildish/playable/maxtier:7/miabs:pro Scabins/free Bchaos/no:fabulgauntlet/chaosburn/whichbez Etoggle/noexp Xnokeybonus/objbonus:10/zonkbonus:5 Glife/sylph/backrow Qfastrom/msgspeedfix -kit:better -kit2:freedom -kit3:exit -noadamants -spoon -smith:alt,playable -vanilla:miabs',
                 host='alpha'
-            )
+            ),
+        case 'pc':
+            return PresetDetails(
+                'O1:quest_monsterking/2:quest_ordeals/random:4,tough_quest/random2:1,quest/req:6/hardreq:1,2/win:crystal Kmain/moon/nofree:dwarf/latedark Pkey Cstandard/noearned/distinct:7/start:tellah,rosa,porom,fusoya/abilities:j/nekkie/nodupes Twildish/playable/mintier:3 Sstandard/no:apples Bstandard/alt:gauntlet/whichburn Etoggle Hrandom Gwarp/life/sylph/backrow -kit2:hero -kit3:freedom -spoon -smith:super,playable',
+                host='galeswift'
+            ),
         case _:
             raise NotImplementedError("Preset option not implemented")
 
