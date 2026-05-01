@@ -165,7 +165,7 @@ def get_preset_details(preset):
             )
         case 'pc':
             return PresetDetails(
-                flags='O1:quest_monsterking/2:quest_ordeals/random:4,tough_quest/random2:1,quest/req:6/hardreq:1,2/win:crystal Kmain/moon/nofree:dwarf/latedark Pkey Cstandard/noearned/distinct:7/start:tellah,rosa,porom,fusoya/abilities:j/nekkie/nodupes Twildish/playable/mintier:3 Sstandard/no:apples Bstandard/alt:gauntlet/whichburn Etoggle Hrandom Gwarp/life/sylph/backrow -kit2:hero -kit3:freedom -spoon -smith:super,playable',
+                flags='O1:quest_monsterking/2:quest_ordeals/random:5,tough_quest/random2:1,quest/req:6/hardreq:1,2/win:crystal Kmain/moon/nofree:dwarf/latedark/start:legend Pkey Cstandard/noearned/distinct:7/start:any/no:fusoya/abilities:j/nekkie/nodupes Twildish/playable/mintier:3 Sstandard/no:apples Bstandard/alt:gauntlet/whichburn Etoggle Hrandom Gwarp/life/sylph/backrow -kit:better -kit2:freedom -kit3:cid -spoon -smith:super,playable',
                 host='galeswift'
             )
         case _:
