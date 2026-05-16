@@ -29,16 +29,6 @@ def get_presets():
         'Push_B_for_Baron': 'Push B for Baron'
     }
 
-def get_eegp_presets():
-    return {
-        'mrw': 'Megaflare Rally (Whale Cup)',
-        'tow': 'Tsunami Open (Whale Cup)',
-        'zcw': 'Zantetsuken Circuit (Whale Cup)',
-        'mr': 'Megaflare Rally',
-        'to': 'Tsunami Open',
-        'zc': 'Zantetsuken Circuit'
-    }
-
 def get_preset_details(preset):
     match preset.lower().replace('-','').replace('_','').replace(' ',''):
         case 'ppc':
