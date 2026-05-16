@@ -6,9 +6,12 @@ class ApiHost:
         self.base_url = base_url
         self.api_key = api_key
 
+def is_valid_site(hostType):
+    return hostType.upper() in ["MAIN", "GALESWIFT", "ALPHA", "LOCAL"]
+
 def get_api_info(hostType):
     hostType = hostType.upper()
-    if hostType not in ["MAIN", "GALESWIFT", "ALPHA", "LOCAL"]:
+    if not is_valid_site(hostType):
         raise NotImplementedError(f'{hostType} is not implemented yet')
     
     url = ''
