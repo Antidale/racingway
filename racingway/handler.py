@@ -5,6 +5,8 @@ import re
 import random
 import string
 import secrets
+
+from racingway import fe_hosts
 from .fe_seed_gen import FF4FESeedGen, InvalidFlagString, SeedGenerationError
 from . import presets
 from racetime_bot import RaceHandler, monitor_cmd, can_moderate, can_monitor, msg_actions
@@ -254,6 +256,7 @@ class RandoHandler(RaceHandler):
         if self.state.get('seed_id') and not can_moderate(message):
             await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
             return
+
         preset_choice = ' '.join(args)
         preset_data = presets.get_preset_details(preset_choice)
 
@@ -271,6 +274,10 @@ class RandoHandler(RaceHandler):
             return
 
         host = args.pop(0)
+        if not fe_hosts.is_valid_site(host):
+            await self.send_message("Must specify a valid site, like '!flags alpha flagstring'. Can also use prof-race-bot style !ff4flags !ff4galeswift or !ff4alpha. For a link to documentation use !help.")
+            return
+
         flags = ' '.join(args)
         await self.roll_seed(flags, host)
 
