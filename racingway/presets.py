@@ -100,7 +100,7 @@ def get_preset_details(preset):
             )
         case 'ke': 
             return PresetDetails(
-                flags="O1:quest_murasamealtar/2:quest_forge/3:quest_tradepink/random:2,tough_quest/req:all/win:game Kmain/force:magma Pnone Crelaxed/noearned/distinct:7/start:not_fusoya/no:fusoya/j:abilities/nekkie Twildish/maxtier:7 Scabins/free Bstandard/alt:gauntlet/whichburn Etoggle/noexp Glife/sylph/backrow -kit:better -kit2:freedom -noadamants -spoon -smith:super,playable -vanilla:miabs",
+                flags="O1:quest_murasamealtar/2:quest_forge/3:quest_tradepink/random:2,tough_quest/req:all/win:game Kmain/force:magma Pnone Crelaxed/noearned/distinct:7/start:not_fusoya/no:fusoya/abilities:j/nekkie Twildish/maxtier:7 Scabins/free Bstandard/alt:gauntlet/whichburn Etoggle/noexp Hrandom Glife/sylph/backrow -kit:better -kit2:freedom -noadamants -spoon -smith:super,playable -vanilla:miabs",
                 host='galeswift'
             )
         case 'probotics':
