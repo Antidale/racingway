@@ -8,7 +8,7 @@ import secrets
 
 from racingway import fe_hosts
 from .fe_seed_gen import FF4FESeedGen, InvalidFlagString, SeedGenerationError
-from . import presets
+from . import presets, community_race
 from racetime_bot import RaceHandler, monitor_cmd, can_moderate, can_monitor, msg_actions
 from .log_seed import FeInfoSeedLogger
 from .log_race import RaceLogger
@@ -247,6 +247,30 @@ class RandoHandler(RaceHandler):
         preset_data = presets.get_preset_details(preset_choice)
 
         await self.roll_seed(preset_data.flags, preset_data.host)
+
+    async def ex_check_cr(self, args, message):
+        """
+        handle !check_cr, for checking the current flagset before it'd be rolled
+        """
+        cr_details = community_race.get_cr_details()
+        await self.send_message(f"the current community race preset is {cr_details.name} rolled on {cr_details.site}.")
+        try:
+            await self.send_message(cr_details.flags)
+        except Exception:
+            await self.send_message("Sorry, the flags were long to send in a message.")
+
+    async def ex_cr(self, args, message):
+        """
+        Handle !cr command, for rolling community race seeds
+        """
+        if (self.state.get('locked')) and not can_monitor(message):
+                    return
+        
+        if self.state.get('seed_id') and not can_moderate(message):
+                    await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
+                    return
+        cr_details = community_race.get_cr_details()
+        await self.roll_seed(cr_details.flags, cr_details.host)
 
     async def ex_flags(self, args, message):
         """
