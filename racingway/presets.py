@@ -1,6 +1,7 @@
 
 def get_presets():
     return {
+        'cr': 'Community Race (pb4b)',
         'pc': 'Paladin Cup',
         'mr': 'Megaflare Rally',
         'to': 'Tsunami Open',
@@ -25,12 +26,16 @@ def get_presets():
         'AC_Group': 'Adamant Cup: Groups',
         'ZZ6': 'ZZ6',
         'Pro_B_Otics': 'Pro B Otics',
-        'VitaminB5': 'Vitamin B5',
-        'Push_B_for_Baron': 'Push B for Baron'
+        'VitaminB5': 'Vitamin B5'
     }
 
 def get_preset_details(preset):
     match preset.lower().replace('-','').replace('_','').replace(' ',''):
+        case 'cr': 
+            return PresetDetails(
+                flags='OA1:boss_mirrorcecil/2:boss_magus/3:boss_milonz/4:boss_plague/5:boss_dlunar/do_1:perseusarrow/do_2:item_t6_7/do_3:artemisbow/do_4:item_t7_8/do_5:crystalsword OB1:char_cecil/2:char_cid/3:char_kain/do_1:ribbon/do_2:crystalring/do_3:powerrobe OC1:quest_monsterqueen/2:quest_baronbasement/3:quest_zot/4:quest_curefever/5:quest_forge/do_1:heroine/do_2:crystalring/do_3:lifestaff/do_4:moonveil/do_5:cursedring OD1:quest_sealedcave/2:quest_giant/3:collect_ki13/do_1:auapple/do_2:cursedring/do_3:adamantarmor OEgroup_a:3/group_b:3/group_c:4/group_d:1/do_1:auapple/do_2:auapple/do_3:avenger/do_all:crystal Kmain/summon/miab:above/char/forge/latedark/force:magma/start:earthcrystal Pkey Cstandard/nofree/nogiant/risky/start:rosa/only:cecil,kain,rosa,cid/j:spells,abilities/nekkie/nodupes/party:4/bye/hero Twild/playable/maxtier:4/miabs:pro Scabins/free Bchaos/nofree/risky/alt:gauntlet/chaosburn Etoggle/noexp Xnokeybonus/objbonus:5/kicheckbonus:2/zonkbonus:2 Glife/backrow Qfastrom/msgspeedfix -kit:better -kit2:dwarf -kit3:notdeme -noadamants -nocursed -vanilla:miabs -pushbtojump',
+                host='alpha'
+            )
         case 'ppc':
             return PresetDetails(
                 flags='OArandom:4,tough_quest/do_2:spoon/do_4:superweapon OBrandom:4,char/do_2:ribbon/do_4:adamantarmor OC1:collect_boss13/random:4,boss/do_3:siren/do_5:cursedring ODgroup_a:all/group_b:all/group_c:all/do_2:crystal Kmain/summon/moon/miab:lst/char/nofree Pkey Cstandard/nofree/nogiant/distinct:8/start:any/j:abilities/nekkie/nodupes/hero Tpro/playable Sstandard/playable/no:sirens Bchaos/alt:gauntlet/chaosburn Etoggle Xobjbonus:5 Gwarp/life/sylph/backrow Qfastrom/msgspeedfix -kit:better -noadamants -nocursed -smith:alt,playable',
@@ -111,11 +116,6 @@ def get_preset_details(preset):
         case 'vitaminb5':
             return PresetDetails(
                 flags='OA1:quest_forge/2:quest_tradepink/3:quest_unlocksewer/random:2,tough_quest/do_4:crystal Kmain/summon/moon/char/risky Pkey Cstandard/nofree/distinct:7/no:tellah,fusoya/restrict:rydia,edward,yang,palom,porom/j:abilities/nekkie/nodupes/bye/hero Tpro/playable Sstandard/playable/no:j Bstandard/risky/alt:gauntlet/whyburn Etoggle/no:jdrops Glife/backrow Qfastrom/msgspeedfix -kit:freedom -kit2:notdeme -kit3:cid -noadamants -nocursed -spoon -pushbtojump',
-                host='alpha'
-            )
-        case 'pushbforbaron':
-            return PresetDetails(
-                flags='OA1:boss_mirrorcecil/2:boss_valvalis/3:boss_golbez/4:boss_bahamut/do_1:defense/do_2:dragoonspear/do_3:avenger/do_4:abel OB1:char_cecil/2:char_rosa/3:char_cid/do_1:ribbon/do_2:crystalring/do_3:powerrobe OC1:quest_baroncastle/2:quest_ordeals/3:quest_zot/4:quest_bigwhale/5:quest_forge/do_1:auapple/do_2:auapple/do_3:auapple/do_4:moonveil/do_5:adamantarmor OD1:quest_sealedcave/group_a:1/group_b:2/group_c:3/do_all:game Kmain/summon/miab:above/char/forge/latedark/force:magma Pkey Cstandard/nofree/nogiant/risky/start:kain/only:cecil,kain,rosa,cid/j:abilities/nekkie/nodupes/party:3/bye/hero Twild/playable/maxtier:4/miabs:pro Scabins/free Bchaos/nofree/risky/alt:gauntlet/chaosburn Etoggle Xnokeybonus/objbonus:5 Glife/backrow Qfastrom/msgspeedfix -kit:better -kit2:dwarf -kit3:notdeme -noadamants -pushbtojump',
                 host='alpha'
             )
         case 'standard5': 
