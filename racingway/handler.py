@@ -253,11 +253,11 @@ class RandoHandler(RaceHandler):
         handle !check_cr, for checking the current flagset before it'd be rolled
         """
         cr_details = community_race.get_cr_details()
-        await self.send_message(f"the current community race preset is {cr_details.name} rolled on {cr_details.site}.")
-        try:
-            await self.send_message(cr_details.flags)
-        except Exception:
+        await self.send_message(f"the current community race preset is {cr_details.name} rolled on {cr_details.host}.")
+        if(len(cr_details.flags) > 1000):
             await self.send_message("Sorry, the flags were long to send in a message.")
+        else:
+            await self.send_message(cr_details.flags)
 
     async def ex_cr(self, args, message):
         """
