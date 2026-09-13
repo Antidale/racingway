@@ -68,7 +68,7 @@ def get_preset_details(preset):
             )
         case 'ace':
             return PresetDetails(
-                flags='Omode:ki12/random:2,quest/random2:1,tough_quest/req:all/win:crystal Kmain/summon/moon/nofree:dwarf/unweighted Pkey Cstandard/nofree/restrict:cecil,fusoya/j:abilities/paladin/nekkie/party:4/treasure:free,unsafe Twildish Sprice:200/pricey:items/standard Bstandard/alt:gauntlet/whichbez Etoggle Glife/sylph/backrow -kit:better -smith:alt -fusoya:sequential_r -exp:objectivebonus25 -tweak:edwardheal',
+                flags='Omode:ki12/random:2,quest/random2:1,tough_quest/req:all/win:crystal Kmain/summon/moon/nofree:dwarf/unweighted Pkey Cstandard/nofree/restrict:cecil,fusoya/abilities:j/paladin/nekkie/party:4/treasure:free,unsafe Twildish Sstandard/price:200/pricey:items Bstandard/alt:gauntlet/whichbez Etoggle Hrandom Glife/sylph/backrow Fsequential:r Aagnostic Xobjectivebonus:25 Zvanilla -kit:better -smith:alt -tweak:edwardheal',
                 host='galeswift')
         case 'fbf':
             return PresetDetails(
@@ -76,11 +76,11 @@ def get_preset_details(preset):
                 host='galeswift')
         case 'zza':
             return PresetDetails(
-                flags='O1:quest_forge/req:all/win:crystal Kmain/moon/pink/nofree/unweighted/start:spoon Pkey Crelaxed/nofree/distinct:8/thrift:3/j:abilities/nodupes/hero Tsemipro/playable/junk Swildish/no:vampires,damage_items Bstandard/restrict:giant,package/whichburn/whichbez Etoggle Glife/sylph/backrow/64 -kit:freedom -noadamants -fusoya:maybe -exp:maxlevelbonus -tweak:edwardheal',
+                flags='O1:quest_forge/req:all/win:crystal Kmain/moon/pink/nofree/unweighted/start:spoon Pkey Crelaxed/nofree/distinct:8/thrift:3/abilities:j/nodupes/hero Tsemipro/playable/junk Swildish/no:vampires,damage_items Bstandard/restrict:giant,package/whichburn/whichbez Etoggle Hrandom Glife/sylph/backrow/64 Fweighted/maybe Ahero Xmaxlevelbonus Zvanilla -kit:freedom -noadamants -tweak:edwardheal',
                 host='galeswift')
         case 'd2t': 
             return PresetDetails(
-                flags='Omode:ki11/req:all/win:crystal Kmain/summon/moon/miab:above,below Pshop Cstandard/nofree/start:not_tellah/thrift:4/j:abilities/hero Tstandard Swildish/no:sirens Bstandard/alt:gauntlet/whichburn/whichbez Etoggle Glife/sylph/backrow -kit:basic -kit2:freedom -kit3:exit -noadamants -spoon -exp:nokeybonus,kicheckbonus5,maxlevelbonus -doorsrando:all',
+                flags='Omode:ki11/req:all/win:crystal Kmain/summon/moon/miab:above,below Pshop Cstandard/nofree/start:not_tellah/thrift:4/abilities:j/hero Tstandard Swildish/no:sirens Bstandard/alt:gauntlet/whichburn/whichbez Etoggle Hrandom Glife/sylph/backrow Fweighted Ahero Xnokeybonus/kicheckbonus:5/maxlevelbonus Zvanilla -kit:basic -kit2:freedom -kit3:exit -noadamants -spoon -doorsrando:all -panicbutton',
                 host='galeswift'
             )
         case 'sumomo':
@@ -105,7 +105,7 @@ def get_preset_details(preset):
             )
         case 'ke': 
             return PresetDetails(
-                flags="O1:quest_murasamealtar/2:quest_forge/3:quest_tradepink/random:2,tough_quest/req:all/win:game Kmain/force:magma Pnone Crelaxed/noearned/distinct:7/start:not_fusoya/no:fusoya/abilities:j/nekkie Twildish/maxtier:7 Scabins/free Bstandard/alt:gauntlet/whichburn Etoggle/noexp Hrandom Glife/sylph/backrow -kit:better -kit2:freedom -noadamants -spoon -smith:super,playable -vanilla:miabs",
+                flags="O1:quest_murasamealtar/2:quest_forge/3:quest_tradepink/random:2,tough_quest/req:all/win:game Kmain/force:magma Pnone Crelaxed/noearned/distinct:7/start:not_fusoya/no:fusoya/abilities:j/nekkie Twildish/maxtier:7 Scabins/free Bstandard/alt:gauntlet/whichburn Etoggle/noexp Hrandom Glife/sylph/backrow Fweighted Aagnostic Zvanilla -kit:better -kit2:freedom -noadamants -spoon -smith:super,playable -vanilla:miabs",
                 host='galeswift'
             )
         case 'probotics':
