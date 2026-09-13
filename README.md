@@ -1,27 +1,41 @@
 Racingway is a [racetime.gg](https://racetime.gg) category bot for [Free Enterprise](https://ff4fe.com/make). If you'd like to help contribute, or have suggestions, hop in the [Tellah's Library](https://discord.gg/x95jN69Ggf) discord server.
 
 # Commands
-## Seed Rolling 
+## Seed Rolling
+
+There are a few options for rolling seeds. First a couple of buttons that Racingway will pin to the race room to make things as easy as possible:
+* the `Preset...` button to roll from a selected preset [!ff4flags]
+* the `Flags...` button that allows you to roll any flagstring and specify what site you want it rolled in (main, alpha, galeswift)
+
+And next commands to use directly in the chat window yourself:
+* [!ff4flags](#ff4flags)
+* [!ff4alpha](#ff4alpha)
+* [!ff4galeswift](#ff4galeswift)
+* [!flags](#flags-host-your_flagstring)
+* [!cr](#cr)
+
+The commands starting `!ff4` all work the same as the commands that `prof-race-bot` provides in the Free Enterprise workshop.
+
 ### !flags $host $your_flagstring
-The flags command can roll seeds from either the main site, or from galeswift's fork. You can either use the `Roll...` button in the bot's pinned message in a race room to select the site and enter your flagstring, or use the `!flags` command directly in the chat. Below is an example of rolling a Fabul Gauntlet Swiss seed off of the main site
+The flags command can roll seeds from either the main site, the 5.0 alpha, or from galeswift's fork. You can either use the `Flags...` button in the bot's pinned message in a race room to select the site and enter your flagstring, or use the `!flags` command directly in the chat. Below is an example of rolling a Fabul Gauntlet Swiss seed off of the main site
 
 ```
 !flags main Orandom:5/win:crystal Kmain/summon/moon/nofree Pkey Cstandard/nofree/j:abilities Tstandard Sstandard Bstandard/alt:gauntlet Etoggle Glife/sylph/backrow -kit:basic -noadamants -vanilla:growup
 ```
 
 ### !ff4flags
-In order to make a transition as easy as possible coming from people using DarkPaladin's dr-race-bot (now known as prof-race-bot and maintained by Wyelm), Racingway has an `!ff4flags` command that will always use the main site to generate your flagstring. Below is an example of a Pro-B-Otics seed being rolled
+The `!ff4flags` command that will always use the main site to generate your flagstring. Below is an example of a Pro-B-Otics seed being rolled
 
 ```
 !ff4flags O1:quest_forge/2:quest_tradepink/3:quest_unlocksewer/random:2,tough_quest/req:4/win:crystal Kmain/summon/moon/unsafe Pkey Cstandard/nofree/distinct:7/no:tellah,fusoya/restrict:rydia,edward,yang,palom,porom/j:abilities/nekkie/nodupes/bye/hero Tpro Sstandard/no:j Bstandard/unsafe/alt:gauntlet/whyburn Etoggle/no:jdrops Glife/backrow -kit:freedom -kit2:notdeme -kit3:cid -noadamants -nocursed -spoon -pushbtojump
 ```
 
 ### !ff4galeswift
-In order to make a transition as easy as possible coming from people using DarkPaladin's dr-race-bot (now known as prof-race-bot and maintained by Wyelm), Racingway has an `!ff4galeswift` command that will always use the Galeswift's site to generate your flagstring. Below is an example of rolling a Doorway To Tomorrow seed being rolled
+The `!ff4galeswift` command that will always use the Galeswift's site to generate your flagstring. Below is an example of rolling a Doorway To Tomorrow seed being rolled
 
 ```
 !ff4galeswift 
-Omode:ki11/req:all/win:crystal Kmain/summon/moon/miab:above,below Pshop Cstandard/nofree/start:not_tellah/thrift:4/j:abilities/hero Tstandard Swildish/no:sirens Bstandard/alt:gauntlet/whichburn/whichbez Etoggle Glife/sylph/backrow -kit:basic -kit2:freedom -kit3:exit -noadamants -spoon -exp:nokeybonus,kicheckbonus5,maxlevelbonus -doorsrando:all
+Omode:ki11/req:all/win:crystal Kmain/summon/moon/miab:above,below Pshop Cstandard/nofree/start:not_tellah/thrift:4/abilities:j/hero Tstandard Swildish/no:sirens Bstandard/alt:gauntlet/whichburn/whichbez Etoggle Hrandom Glife/sylph/backrow Fweighted Ahero Xnokeybonus/kicheckbonus:5/maxlevelbonus Zvanilla -kit:basic -kit2:freedom -kit3:exit -noadamants -spoon -doorsrando:all -panicbutton
 ```
 
 ### !ff4alpha
