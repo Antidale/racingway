@@ -14,7 +14,7 @@ And next commands to use directly in the chat window yourself:
 * [!flags](#flags-host-your_flagstring)
 * [!cr](#cr)
 
-The commands starting `!ff4` all work the same as the commands that `prof-race-bot` provides in the Free Enterprise workshop.
+The commands starting `!ff4` all work the same as the commands that `prof-race-bot` provides in the Free Enterprise workshop. You can use either the full flagstring or the shortened "binary" representation. Racetime.gg does have a message length limit of 1000 characters, so some flagsets might require the shortened form.
 
 ### !flags $host $your_flagstring
 The flags command can roll seeds from either the main site, the 5.0 alpha, or from galeswift's fork. You can either use the `Flags...` button in the bot's pinned message in a race room to select the site and enter your flagstring, or use the `!flags` command directly in the chat. Below is an example of rolling a Fabul Gauntlet Swiss seed off of the main site
@@ -85,8 +85,6 @@ Get Racingway's feelings about various Hook things.
 
 ### !eatcookie
 Mmm, cookie.
-
-
 
 # Credits and thanks
 Racingway built with the [racetime-bot](https://github.com/racetimeGG/racetime-bot) and is initially patterned after [ootr-randobot](https://github.com/OoTRandomizer/rtgg-randobot). Seed generation code initially patterned after Yanguin8r's code for the same.
