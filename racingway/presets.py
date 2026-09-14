@@ -1,7 +1,7 @@
 
 def get_presets():
     return {
-        'cr': 'Community Race (sampstand)',
+        'cr': 'Community Race (Prince\'s Gambit)',
         'pc': 'Paladin Cup',
         'mr': 'Megaflare Rally',
         'to': 'Tsunami Open',
@@ -33,7 +33,7 @@ def get_preset_details(preset):
     match preset.lower().replace('-','').replace('_','').replace(' ',''):
         case 'cr': 
             return PresetDetails(
-                flags='OArandom:5,tough_quest OB1:quest_forge/group_a:4/do_all:crystal Kmain/summon/moon/char/nofree/latedark Pkey Cstandard/nofree/nogiant/distinct:9/start:any/partner:char/no:fusoya/j:abilities/nekkie Twildish/maxtier:7/miabs:pro Sstandard Bmaybe/alt:gauntlet/chaosburn/whichbez Etoggle Xnokeybonus/objbonus:20/kicheckbonus:3/maxmulti:400/bonuses:mul Gwarp/life/sylph/backrow Qfastrom/msgspeedfix -kit:basic -kit2:better -noadamants -spoon -smith:super,playable',
+                flags='OA1:quest_forge/2:quest_tradepink OB1:quest_monsterqueen/2:quest_monsterking/3:quest_baronbasement OC1:collect_ki15/2:collect_boss20/do_all:adamantarmor OD1:quest_sealedcave/2:quest_crystalaltar/3:quest_masamunealtar/group_a:1/group_b:1/do_all:game OE1:boss_rubicant/2:quest_falcon/group_a:1/group_b:1/do_all:crystal Kmain/summon/miab:above/nofree Pkey Cstandard/nofree/distinct:8/start:not_cecil,not_kain,not_cid,not_fusoya/partner:edge/no:fusoya/j:abilities/nekkie/nodupes/party:4 Twildish Sstandard/no:sirens Bmaybe/no:waterhag,fabulgauntlet/whichburn/whichbez Etoggle Xnokeybonus/objbonus:8/kicheckbonus:8/maxmulti:300 Gwarp/life/sylph/backrow Qmsgspeedfix -kit:better -kit2:exit -kit3:random -noadamants -nocursed -spoon -smith:alt',
                 host='alpha'
             )
         case 'ppc':
