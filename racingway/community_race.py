@@ -1,8 +1,8 @@
 def get_cr_details():
     return CommunityRaceDetails(
-        flags="OA1:quest_forge/2:quest_tradepink OB1:quest_monsterqueen/2:quest_monsterking/3:quest_baronbasement OC1:collect_ki15/2:collect_boss20/do_all:adamantarmor OD1:quest_sealedcave/2:quest_crystalaltar/3:quest_masamunealtar/group_a:1/group_b:1/do_all:game OE1:boss_rubicant/2:quest_falcon/group_a:1/group_b:1/do_all:crystal Kmain/summon/miab:above/nofree Pkey Cstandard/nofree/distinct:8/start:not_cecil,not_kain,not_cid,not_fusoya/partner:edge/no:fusoya/j:abilities/nekkie/nodupes/party:4 Twildish Sstandard/no:sirens Bmaybe/no:waterhag,fabulgauntlet/whichburn/whichbez Etoggle Xnokeybonus/objbonus:8/kicheckbonus:8/maxmulti:300 Gwarp/life/sylph/backrow Qmsgspeedfix -kit:better -kit2:exit -kit3:random -noadamants -nocursed -spoon -smith:alt",
+        flags="OArandom:7,tough_quest OB1:quest_cavebahamut/2:quest_traderat/group_a:5/do_all:game OC1:boss_milonz/2:boss_kainazzo/3:boss_valvalis/4:boss_rubicant/5:boss_wyvern/do_1:siren/do_2:siren/do_3:siren/do_4:siren/do_all:siren OD1:collect_gp250/do_all:superweapon OE1:quest_forge/do_all:adamantarmor Kmain/summon/miab:above/char/force:magma/unweighted/start:earthcrystal Pkey Crelaxed/nofree/nogiant/distinct:4/start:any/partner:char/no:yang,fusoya/j:abilities/nekkie/nodupes/party:1/bye Twildish/mintier:3/maxtier:6 Spro/sell:quarter/no:sirens,life/maxitemtier:5 Bstandard/nofree/risky/alt:gauntlet/whichburn/whichbez/whybez Enoencounters/keep:behemoths/no:sirens Xobjbonus:10/kicheckbonus:2/zonkbonus:2/bonuses:mul Gwarp/backrow Qfastrom/msgspeedfix -kit:basic -kit2:random -kit3:random -noadamants -smith:none -wacky:omnidextrous",
         host="alpha",
-        name="The Prince's Gambit"
+        name="Crystal Warrior"
     )
 
 class CommunityRaceDetails():
