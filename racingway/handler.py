@@ -99,7 +99,7 @@ class RandoHandler(RaceHandler):
                             msg_actions.SelectInput(
                                 name="preset",
                                 label="choice",
-                                default="pc",
+                                default="cr",
                                 options=presets.get_presets(),
                             )
                         )
