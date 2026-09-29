@@ -1,7 +1,7 @@
 
 def get_presets():
     return {
-        'cr': 'Community Race (Crystal Warrior)',
+        'cr': 'Community Race (Kokkol Express)',
         'pc': 'Paladin Cup',
         'mr': 'Megaflare Rally',
         'to': 'Tsunami Open',
@@ -32,10 +32,7 @@ def get_presets():
 def get_preset_details(preset):
     match preset.lower().replace('-','').replace('_','').replace(' ',''):
         case 'cr': 
-            return PresetDetails(
-                flags='OArandom:7,tough_quest OB1:quest_cavebahamut/2:quest_traderat/group_a:5/do_all:game OC1:boss_milonz/2:boss_kainazzo/3:boss_valvalis/4:boss_rubicant/5:boss_wyvern/do_1:siren/do_2:siren/do_3:siren/do_4:siren/do_all:siren OD1:collect_gp250/do_all:superweapon OE1:quest_forge/do_all:adamantarmor Kmain/summon/miab:above/char/force:magma/unweighted/start:earthcrystal Pkey Crelaxed/nofree/nogiant/distinct:4/start:any/partner:char/no:yang,fusoya/j:abilities/nekkie/nodupes/party:1/bye Twildish/mintier:3/maxtier:6 Spro/sell:quarter/no:sirens,life/maxitemtier:5 Bstandard/nofree/risky/alt:gauntlet/whichburn/whichbez/whybez Enoencounters/keep:behemoths/no:sirens Xobjbonus:10/kicheckbonus:2/zonkbonus:2/bonuses:mul Gwarp/backrow Qfastrom/msgspeedfix -kit:basic -kit2:random -kit3:random -noadamants -smith:none -wacky:omnidextrous',
-                host='alpha'
-            )
+            return get_preset_details('ke')
         case 'ppc':
             return PresetDetails(
                 flags='OArandom:4,tough_quest/do_2:spoon/do_4:superweapon OBrandom:4,char/do_2:ribbon/do_4:adamantarmor OC1:collect_boss13/random:4,boss/do_3:siren/do_5:cursedring ODgroup_a:all/group_b:all/group_c:all/do_2:crystal Kmain/summon/moon/miab:lst/char/nofree Pkey Cstandard/nofree/nogiant/distinct:8/start:any/j:abilities/nekkie/nodupes/hero Tpro/playable Sstandard/playable/no:sirens Bchaos/alt:gauntlet/chaosburn Etoggle Xobjbonus:5 Gwarp/life/sylph/backrow Qfastrom/msgspeedfix -kit:better -noadamants -nocursed -smith:alt,playable',
