@@ -32,7 +32,10 @@ def get_presets():
 def get_preset_details(preset):
     match preset.lower().replace('-','').replace('_','').replace(' ',''):
         case 'cr': 
-            return get_preset_details('ke')
+            return PresetDetails(
+                flags='OA1:quest_forge/2:quest_tradepink OB1:quest_monsterqueen/2:quest_monsterking/3:quest_baronbasement OC1:collect_ki15/2:collect_boss20/do_all:adamantarmor OD1:quest_sealedcave/2:quest_crystalaltar/3:quest_masamunealtar/group_a:1/group_b:1/do_all:game OE1:boss_rubicant/2:quest_falcon/group_a:1/group_b:1/do_all:crystal Kmain/summon/miab:above/nofree Pkey Cstandard/nofree/distinct:8/start:not_cecil,not_kain,not_cid,not_fusoya/partner:edge/no:fusoya/j:abilities/nekkie/nodupes/party:4 Twildish Sstandard/no:sirens Bmaybe/no:waterhag,fabulgauntlet/whichburn/whichbez Etoggle Xnokeybonus/objbonus:8/kicheckbonus:8/maxmulti:300 Gwarp/life/sylph/backrow Qmsgspeedfix -kit:better -kit2:exit -kit3:random -noadamants -nocursed -spoon -smith:alt',
+                host='alpha'
+            )
         case 'ppc':
             return PresetDetails(
                 flags='OArandom:4,tough_quest/do_2:spoon/do_4:superweapon OBrandom:4,char/do_2:ribbon/do_4:adamantarmor OC1:collect_boss13/random:4,boss/do_3:siren/do_5:cursedring ODgroup_a:all/group_b:all/group_c:all/do_2:crystal Kmain/summon/moon/miab:lst/char/nofree Pkey Cstandard/nofree/nogiant/distinct:8/start:any/j:abilities/nekkie/nodupes/hero Tpro/playable Sstandard/playable/no:sirens Bchaos/alt:gauntlet/chaosburn Etoggle Xobjbonus:5 Gwarp/life/sylph/backrow Qfastrom/msgspeedfix -kit:better -noadamants -nocursed -smith:alt,playable',
