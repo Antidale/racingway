@@ -1,7 +1,7 @@
 
 def get_presets():
     return {
-        'cr': 'Community Race (Kokkol Express)',
+        'cr': 'Community Race (This/That)',
         'pc': 'Paladin Cup',
         'mr': 'Megaflare Rally',
         'to': 'Tsunami Open',
