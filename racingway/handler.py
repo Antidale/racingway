@@ -239,7 +239,7 @@ class RandoHandler(RaceHandler):
         if (self.state.get('locked')) and not can_monitor(message):
             return
 
-        if self.state.get('seed_id') and not can_moderate(message):
+        if self.state.get('seed_id') and not can_monitor(message):
             await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
             return
 
@@ -266,7 +266,7 @@ class RandoHandler(RaceHandler):
         if (self.state.get('locked')) and not can_monitor(message):
                     return
         
-        if self.state.get('seed_id') and not can_moderate(message):
+        if self.state.get('seed_id') and not can_monitor(message):
                     await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
                     return
         cr_details = community_race.get_cr_details()
@@ -279,7 +279,7 @@ class RandoHandler(RaceHandler):
         if (self.state.get('locked')) and not can_monitor(message):
             return
 
-        if self.state.get('seed_id') and not can_moderate(message):
+        if self.state.get('seed_id') and not can_monitor(message):
             await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
             return
 
@@ -298,7 +298,7 @@ class RandoHandler(RaceHandler):
         if (self.state.get('locked')) and not can_monitor(message):
             return
 
-        if self.state.get('seed_id') and not can_moderate(message):
+        if self.state.get('seed_id') and not can_monitor(message):
             await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
             return
 
@@ -312,7 +312,7 @@ class RandoHandler(RaceHandler):
         if (self.state.get('locked')) and not can_monitor(message):
             return
 
-        if self.state.get('seed_id') and not can_moderate(message):
+        if self.state.get('seed_id') and not can_monitor(message):
             await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
             return
 
@@ -326,7 +326,7 @@ class RandoHandler(RaceHandler):
         if (self.state.get('locked')) and not can_monitor(message):
             return
 
-        if self.state.get('seed_id') and not can_moderate(message):
+        if self.state.get('seed_id') and not can_monitor(message):
             await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
             return
 
