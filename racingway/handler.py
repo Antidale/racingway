@@ -236,11 +236,7 @@ class RandoHandler(RaceHandler):
         """
         Handle !preset commands.
         """
-        if (self.state.get('locked')) and not can_monitor(message):
-            return
-
-        if self.state.get('seed_id') and not can_monitor(message):
-            await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
+        if not await self.can_roll_seed(message):
             return
 
         preset_choice = ' '.join(args)
@@ -263,12 +259,9 @@ class RandoHandler(RaceHandler):
         """
         Handle !cr command, for rolling community race seeds
         """
-        if (self.state.get('locked')) and not can_monitor(message):
-                    return
+        if not await self.can_roll_seed(message):
+            return
         
-        if self.state.get('seed_id') and not can_monitor(message):
-                    await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
-                    return
         cr_details = community_race.get_cr_details()
         await self.roll_seed(cr_details.flags, cr_details.host)
 
@@ -276,11 +269,7 @@ class RandoHandler(RaceHandler):
         """
         Handle !flags commands.
         """
-        if (self.state.get('locked')) and not can_monitor(message):
-            return
-
-        if self.state.get('seed_id') and not can_monitor(message):
-            await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
+        if not await self.can_roll_seed(message):
             return
 
         host = args.pop(0)
@@ -295,11 +284,7 @@ class RandoHandler(RaceHandler):
         """
         Handle !ff4flags commands. Used as an easy replacement for people familiar with dr-race-bot
         """
-        if (self.state.get('locked')) and not can_monitor(message):
-            return
-
-        if self.state.get('seed_id') and not can_monitor(message):
-            await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
+        if not await self.can_roll_seed(message):
             return
 
         args.insert(0, 'main')
@@ -309,11 +294,7 @@ class RandoHandler(RaceHandler):
         """
         Handle !ff4galeswift commands. Used as an easy replacement for people familiar with dr-race-bot
         """
-        if (self.state.get('locked')) and not can_monitor(message):
-            return
-
-        if self.state.get('seed_id') and not can_monitor(message):
-            await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
+        if not await self.can_roll_seed(message):
             return
 
         args.insert(0, 'galeswift')
@@ -323,11 +304,7 @@ class RandoHandler(RaceHandler):
         """
         Handle !ff4galeswift commands. Used as an easy replacement for people familiar with dr-race-bot
         """
-        if (self.state.get('locked')) and not can_monitor(message):
-            return
-
-        if self.state.get('seed_id') and not can_monitor(message):
-            await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
+        if not await self.can_roll_seed(message):
             return
 
         args.insert(0, 'alpha')
@@ -499,6 +476,16 @@ class RandoHandler(RaceHandler):
         if self.state.get('pinned_msg'):
             await self.unpin_message(self.state['pinned_msg'])
             del self.state['pinned_msg']
+
+    async def can_roll_seed(self, message):
+        if (self.state.get('locked')) and not can_monitor(message):
+            return False
+
+        if self.state.get('seed_id') and not can_monitor(message):
+            await self.send_message("A seed is being or has been rolled. Only a mod can re-generate a seed")
+            return False
+
+        return True
 
     async def roll_seed(self, flags, host):
         """
