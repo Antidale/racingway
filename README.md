@@ -39,7 +39,7 @@ Omode:ki11/req:all/win:crystal Kmain/summon/moon/miab:above,below Pshop Cstandar
 ```
 
 ### !ff4alpha
-Continuing to make things as straightforward as possible for users of prof-race-bot, Racingway has teh `!ff4alpha` command that will always use the public alpha site to generate seeds. This command will be removed during periods where the alpha site is no longer public or active.  Below is an example of rolling a very long alpha seed with the command:
+Continuing to make things as straightforward as possible for users of prof-race-bot, Racingway has the `!ff4alpha` command that will always use the public alpha site to generate seeds. This command will be removed during periods where the alpha site is no longer public or active.  Below is an example of rolling a very long alpha seed with the command:
 
 ```
 !ff4alpha Omode_dkmatter:quests OA1:boss_fabulgauntlet/2:boss_wyvern/3:boss_kainazzo/4:boss_valvalis/5:boss_golbez/do_1:dkmatter3/do_2:dkmatter3/do_3:abel/do_4:dkmatter4/do_all:dkmatter5 OB1:quest_cavebahamut/2:quest_murasamealtar/3:quest_crystalaltar/4:quest_whitealtar/5:quest_ribbonaltar/do_1:dkmatter5/do_2:dkmatter7/do_3:adamantarmor/do_4:dkmatter7/do_all:dkmatter10 OC1:quest_forge/2:quest_tradepink/3:quest_tradepan/4:char_edward/do_1:dkmatter3/do_2:dkmatter3/do_3:dkmatter4/do_all:dkmatter5 OD1:collect_dkmatter15/2:collect_dkmatter30/3:collect_dkmatter45/4:collect_dkmatter60/do_1:crystalring/do_2:powerrobe/do_3:spoon/do_all:crystal Kmain/miab:above/char/forge/latedark Pkey Cstandard/nofree/distinct:9/start:kain/restrict:cecil,edge,fusoya/j:abilities/nekkie Twildish/playable/mintier:3/miabs:pro Sstandard/playable/sell:quarter Bchaos/alt:gauntlet/chaosburn Etoggle Xobjbonus:5 Glife/sylph/backrow Qfastrom/msgspeedfix -kit:eblan -kit2:defense -kit3:cid -noadamants -nocursed -spoon
@@ -68,9 +68,11 @@ If the user's racetime full name (e.g. their display name plus the discriminator
 A command to help remind runners of stream expectations while their race is being restreamed. Can also be invoked by `!r` and `!reminder`.
 
 ### !openvolunteers
+### !ov
 A command to open a volunteering window for racers to be featured on a restream. This pins a message with a `Volunteer` button, and allows users to use the `!volunteer` command to send a message to the restreamer (e.g. the person who invoked this command). This command is limited to use by race_monitors. Can also be invoked by `!ov`.
 
 ### !closevolunteers
+### !cv
 A command to close the volunteering window. Unpins the message and racingway will no longer send a DM to the person who used `!openvolunteers`. Leaves the race state in a manner where `!openvolunteers` cannot be used again to re-open volunteering. This command is limited to use by race_monitors, and may later be restricted to _just_ the person who used `!openvolunteers`. Can also be invoked by `!cv`
 
 ### !volunteer
