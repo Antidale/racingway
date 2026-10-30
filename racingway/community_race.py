@@ -1,8 +1,8 @@
 def get_cr_details():
     return CommunityRaceDetails(
-        flags="O2:quest_forge/3:quest_music/4:quest_lowerbabil/5:quest_cavebahamut/6:quest_toroiatreasury/7:boss_fabulgauntlet/8:quest_magma/req:6/win:crystal Kmain/moon/miab:standard/force:hook Pkey Cstandard/nofree/distinct:7/start:rosa,porom/no:tellah/restrict:cecil,yang,fusoya/abilities:j/nekkie/nodupes Tpro/no:j/maxtier:5 Spro Bstandard/alt:gauntlet/whichburn Etoggle Hrandom Glife/backrow Fweighted Aagnostic Zvanilla -kit:basic -kit3:random -noadamants -nocursed -smith:super -vanilla:miabs -wacky:omnidextrous",
+        flags="O1:quest_monsterking/2:quest_ordeals/random:5,tough_quest/random2:2,quest,boss/req:7/hardreq:1,2/win:crystal Kmain/moon/nofree:dwarf/unreliabledark/start:legend Pkey Crelaxed/noearned/distinct:7/start:any/no:fusoya/abilities:j/nekkie/nodupes Twildish/playable/maxtier:7/mintier:3 Sstandard/playable/always:sirens,hrglass,bacchus,starveil,cure3,illusion,coffin Bstandard/alt:gauntlet/whichburn/newscriptstats Etoggle Hrandom Gwarp/life/backrow Fweighted Aagnostic Xzonkbonus:10 Zvanilla -kit:better -kit2:freedom -kit3:hero -noadamants -spoon -smith:super,good,spoilsuper -vanilla:miabs -tweak:yanghp",
         host="galeswift",
-        name="OMG"
+        name="Paladin Cup"
     )
 
 class CommunityRaceDetails():
