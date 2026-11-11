@@ -251,7 +251,8 @@ class RandoHandler(RaceHandler):
         cr_details = community_race.get_cr_details()
         await self.send_message(f"the current community race preset is {cr_details.name} rolled on {cr_details.host}.")
         if(len(cr_details.flags) > 1000):
-            await self.send_message("Sorry, the flags were long to send in a message.")
+            await self.send_message("Sorry, the flags are long to send in a message. Here's a link to the flagset:")
+            await self.send_message(cr_details.flagsLink)
         else:
             await self.send_message(cr_details.flags)
 
