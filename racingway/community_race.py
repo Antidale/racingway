@@ -1,9 +1,9 @@
 def get_cr_details():
     return CommunityRaceDetails(
-        flags="OArandom:5,tough_quest OB1:quest_forge/group_a:4/do_all:crystal Kmain/summon/moon/char/nofree/latedark Pkey Cstandard/nofree/nogiant/distinct:9/start:any/partner:char/no:fusoya/j:abilities/nekkie Twildish/maxtier:7/miabs:pro Sstandard Bmaybe/alt:gauntlet/chaosburn/whichbez Etoggle Xnokeybonus/objbonus:20/kicheckbonus:3/maxmulti:400/bonuses:mul Gwarp/life/sylph/backrow Qfastrom/msgspeedfix -kit:basic -kit2:better -noadamants -spoon -smith:super,playable",
-        flagsLink="https://alpha.ff4fe.com/make?flags=cBQAKKAEACVIABwQACQgAPHDQAVRJAAEIAAECAAIQAAEMQAEUoAACEAAEPAABYA4o7yBACw",
-        host="alpha",
-        name="Sample Standard"
+        flags="O1:quest_traderat/2:quest_falcon/3:quest_ribbonaltar/random:3,tough_quest,boss/req:5/win:crystal Kmain/summon/moon/nofree Pkey Crelaxed/nofree/distinct:7/start:not_cecil,not_tellah,not_fusoya/j:abilities/nekkie/nodupes/bye/permajoin/hero Twildish/mintier:3 Sstandard Bstandard/alt:gauntlet/whichburn Etoggle Gwarp/life/sylph/backrow -kit:freedom -spoon",
+        flagsLink="https://ff4fe.com/make?flags=bBAYAEOUZAQAAADBmXsgcAEhAAAAAAHDMAgEBpAF4BQAC",
+        host="main",
+        name="Sumomo"
     )
 
 class CommunityRaceDetails():
